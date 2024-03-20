@@ -1,5 +1,5 @@
 {
-  "originHash" : "77dc8fe4aed5382bf230ac7d8553a741e68f414b00e992beed0f10ae46cf2faf",
+  "originHash" : "c4107148567f2f665ceaa144a55dfd728d90e96e90e6588c03265ef7883a7db9",
   "pins" : [
     {
       "identity" : "abseil-cpp-binary",
@@ -125,6 +125,15 @@
       "state" : {
         "revision" : "65e8f29b2d63c4e38e736b25c27b83e012159be8",
         "version" : "1.25.2"
+      }
+    },
+    {
+      "identity" : "swiftyjson",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/SwiftyJSON/SwiftyJSON",
+      "state" : {
+        "revision" : "b3dcd7dbd0d488e1a7077cb33b00f2083e382f07",
+        "version" : "5.0.1"
       }
     }
   ],

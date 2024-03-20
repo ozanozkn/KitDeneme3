@@ -20,7 +20,7 @@ class ConnectivityManager: NSObject {
         print("DEBUG PRINT:", "checked internet connection")
         
             if !(NetworkReachabilityManager.default?.isReachable ?? false) {
-                AlertManager.showInvalidEmailAlert(on: LoginController())
+                AlertManager.showConnectionError(on: LoginController())
                 
                 print("DEBUG PRINT:", "must show alert")
                 
@@ -32,7 +32,7 @@ class ConnectivityManager: NSObject {
             networkReachability?.startListening(onUpdatePerforming: { [weak self] status in
                 switch status {
                 case .notReachable:
-                    self?.showAlert(title: "Nope Internet Connection", message: "Please check your internet connection.")
+                    self?.showAlert(title: "No Internet Connection", message: "Please check your internet connection.")
                 case .reachable(_), .unknown:
                     self?.showAlert(title: "Connected!", message: "")
                     break

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class LoginController: UIViewController {
+class LoginController: UIViewController, UITextFieldDelegate {
 
     private let headerView = AuthHeaderView(title: "Sign In", subTitle: "Sign in to your account")
     private let emailField = CustomTextField(fieldType: .email)
@@ -20,6 +20,9 @@ class LoginController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupUI()
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        view.addGestureRecognizer(tapGesture)
         
         self.signInButton.addTarget(self, action: #selector(didTapSignIn), for: .touchUpInside)
         self.newUserButton.addTarget(self, action: #selector(didTapNewUser), for: .touchUpInside)
@@ -137,6 +140,17 @@ class LoginController: UIViewController {
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+            // Open the keyboard when a text field is clicked
+            textField.becomeFirstResponder()
+        }
+        
+        // MARK: - Tap Gesture Recognizer
+        
+        @objc private func dismissKeyboard() {
+            // Dismiss the keyboard when tapping outside of the text fields
+            view.endEditing(true)
+        }
 
     
 }

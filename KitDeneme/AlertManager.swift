@@ -96,4 +96,9 @@ extension AlertManager {
     }
 }
 
+extension AlertManager {
+    public static func showConnectionError(on vc: UIViewController) {
+        showBasicAlert(on: vc, title: "Error Connecting to the Internet", message: nil)
+    }
+}
 

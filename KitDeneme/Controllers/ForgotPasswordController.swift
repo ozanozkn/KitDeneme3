@@ -27,6 +27,9 @@ class ForgotPasswordController: UIViewController {
 
         setupUI()
         
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        view.addGestureRecognizer(tapGesture)
+        
         self.resetPasswordButton.addTarget(self, action: #selector(didTapForgotPassword), for: .touchUpInside)
     }
     
@@ -92,4 +95,15 @@ class ForgotPasswordController: UIViewController {
         // TODO: - Email validation
     }
   
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+            // Open the keyboard when a text field is clicked
+            textField.becomeFirstResponder()
+        }
+        
+        // MARK: - Tap Gesture Recognizer
+        
+        @objc private func dismissKeyboard() {
+            // Dismiss the keyboard when tapping outside of the text fields
+            view.endEditing(true)
+        }
 }

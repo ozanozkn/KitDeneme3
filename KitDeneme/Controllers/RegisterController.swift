@@ -45,6 +45,8 @@ class RegisterController: UIViewController {
         
         self.termsTextView.delegate = self
         
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        view.addGestureRecognizer(tapGesture)
         
         self.signUpButton.addTarget(self, action: #selector(didTapSignUp), for: .touchUpInside)
         self.signInButton.addTarget(self, action: #selector(didTapSignIn), for: .touchUpInside)
@@ -168,6 +170,18 @@ class RegisterController: UIViewController {
         print("DEBUG PRINT:", "didTapSignIn")
         
     }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+            // Open the keyboard when a text field is clicked
+            textField.becomeFirstResponder()
+        }
+        
+        // MARK: - Tap Gesture Recognizer
+        
+        @objc private func dismissKeyboard() {
+            // Dismiss the keyboard when tapping outside of the text fields
+            view.endEditing(true)
+        }
     
 }
 

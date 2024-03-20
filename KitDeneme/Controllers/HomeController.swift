@@ -10,7 +10,9 @@ import FirebaseAuth
 import MapKit
 import CoreLocation
 
-class HomeController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
+
+
+class HomeController: UIViewController, MKMapViewDelegate {
     
     
     
@@ -21,19 +23,35 @@ class HomeController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         return map
     }()
     
-    var locationManager:CLLocationManager!
-    var currentLocationStr = "Current location"
-
+    let menuButton: UIButton = {
+            let button = UIButton(type: .system)
+            let image = UIImage(systemName: "list.dash") // Hamburger icon
+            button.setImage(image, for: .normal)
+            button.backgroundColor = .white
+            button.tintColor = .systemBlue
+            button.layer.cornerRadius = 10 // Set corner radius to create a rounded rectangle
+            button.layer.masksToBounds = true // Clip sublayers to the rounded corners
+            
+            button.addTarget(self, action: #selector(didTapMenu), for: .touchUpInside)
+            return button
+        }()
+        
     
-    private let label: UILabel = {
-        let label = UILabel()
-        label.textColor = .label
-        label.textAlignment = .center
-        label.font = .systemFont(ofSize: 24, weight: .semibold)
-        label.text = "Loading..."
-        label.numberOfLines = 2
-        return label
-    }()
+    var locationManager = CLLocationManager()
+    let regionInMeters: Double = 10000
+
+//    private let logoutButton: UIButton = {
+//            
+//        let button = UIButton(type: .system)
+//        button.setTitle("Logout", for: .normal)
+//        button.setTitleColor(.red, for: .normal)
+//        button.backgroundColor = .white
+//        button.layer.cornerRadius = 8
+//        button.layer.borderWidth = 1
+//        button.layer.borderColor = UIColor.white.cgColor
+//        button.addTarget(self, action: #selector(didTapLogout), for: .touchUpInside)
+//            return button
+//        }()
     
     
     
@@ -44,21 +62,9 @@ class HomeController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         super.viewDidLoad()
         self.setupUI()
         
-//        AuthService.shared.fetchUser { [weak self] user, error in
-//            guard let self = self else { return }
-//            if let error = error {
-//                AlertManager.showFetchingUserError(on: self, with: error)
-//                return
-//            }
-//            
-//            if let user = user {
-//                self.label.text = "\(user.username)\n\(user.email)"
-//            }
-//        }
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        determineCurrentLocation()
+        checkLocationServices()
+        
+
     }
     
     
@@ -66,13 +72,14 @@ class HomeController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     private func setupUI() {
         self.view.backgroundColor = .systemBackground
         
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Logout", style: .plain, target: self, action: #selector(didTapLogout))
 
-//        self.view.addSubview(label)
         self.view.addSubview(mapView)
-        
-//        label.translatesAutoresizingMaskIntoConstraints = false
+//        self.view.addSubview(logoutButton)
+        self.view.addSubview(menuButton)
+                
+        menuButton.translatesAutoresizingMaskIntoConstraints = false
         mapView.translatesAutoresizingMaskIntoConstraints = false
+//        logoutButton.translatesAutoresizingMaskIntoConstraints = false
 
         
         NSLayoutConstraint.activate([
@@ -81,57 +88,157 @@ class HomeController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
             mapView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
             mapView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
             
+//            logoutButton.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 10),
+//            logoutButton.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -16),
+//            logoutButton.widthAnchor.constraint(equalToConstant: 100),
+//            logoutButton.heightAnchor.constraint(equalToConstant: 40),
+//            
+            menuButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 16),
+            menuButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 25),
+            menuButton.widthAnchor.constraint(equalToConstant: 40),
+            menuButton.heightAnchor.constraint(equalToConstant: 40)
+            
             
 //            label.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
 //            label.centerYAnchor.constraint(equalTo: self.view.centerYAnchor),
-//            
+//
             
         ])
     }
     
     // MARK: - Selectors
     
-    @objc private func didTapLogout() {
+    @objc private func didTapMenu() {
+        // Show the hamburger menu as a sidebar
         
-        AuthService.shared.signOut { error in
-            if let error = error {
-                AlertManager.showLogoutError(on: self, with: error)
+        // Width of the sidebar menu
+        let sidebarWidth: CGFloat = 250
+        
+        // Create the hamburger menu controller
+        let hamburgerMenuController = HamburgerMenuController()
+        
+        // Set the frame of the hamburger menu
+        hamburgerMenuController.view.frame = CGRect(x: -sidebarWidth, y: 0, width: sidebarWidth, height: view.frame.height)
+        
+        // Create an overlay view
+        let overlayView = UIView(frame: view.bounds)
+        overlayView.backgroundColor = UIColor.black.withAlphaComponent(0.5)
+        view.addSubview(overlayView)
+        
+        // Add a tap gesture recognizer to the overlay view
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(didTapOverlay(_:)))
+        overlayView.addGestureRecognizer(tapGesture)
+        
+        // Add the hamburger menu as a child view controller
+        addChild(hamburgerMenuController)
+        view.addSubview(hamburgerMenuController.view)
+        hamburgerMenuController.didMove(toParent: self)
+        
+        // Animate the sidebar menu to slide in from the left
+        UIView.animate(withDuration: 0.3) {
+            hamburgerMenuController.view.frame.origin.x = 0
+        }
+    }
+
+    @objc private func didTapOverlay(_ sender: UITapGestureRecognizer) {
+        // Dismiss the sidebar menu and return to HomeController
+        
+        // Width of the sidebar menu
+        let sidebarWidth: CGFloat = 250
+        
+        // Find the hamburger menu controller
+        guard let hamburgerMenuController = children.first as? HamburgerMenuController else {
+            return
+        }
+        
+        // Animate the sidebar menu to slide out to the left
+        UIView.animate(withDuration: 0.3, animations: {
+            hamburgerMenuController.view.frame.origin.x = -sidebarWidth
+        }) { (_) in
+            // Remove the overlay view and hamburger menu controller
+            sender.view?.removeFromSuperview()
+            hamburgerMenuController.removeFromParent()
+        }
+    }
+
+
+
+    
+//    @objc private func didTapLogout() {
+//        AuthService.shared.signOut { [weak self] error in
+//            guard let self = self else { return }
+//            if let error = error {
+//                AlertManager.showLogoutError(on: self, with: error)
+//            }
+//        }
+//        
+//        if let sceneDelegate = self.view.window?.windowScene?.delegate as? SceneDelegate {
+//            sceneDelegate.checkAuthentication()
+//        }
+//    }
+    
+    func setupLocationManager() {
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+    }
+    
+    func centerViewOnUserLocation() {
+        if let location = locationManager.location?.coordinate {
+            let region = MKCoordinateRegion.init(center: location, latitudinalMeters: 10000, longitudinalMeters: 10000)
+            mapView.setRegion(region, animated: true)
+        }
+    }
+    
+    func checkLocationServices() {
+        DispatchQueue.global().async {
+            if CLLocationManager.locationServicesEnabled() {
+                // setup our location manager
+                self.setupLocationManager()
+                self.checkLocationAuthorization()
+            } else {
+                // show alert letting the user know they have to turn this on
             }
         }
         
-        if let sceneDelegate = self.view.window?.windowScene?.delegate as? SceneDelegate {
-            
-            sceneDelegate.checkAuthentication()
+    }
+    
+    func checkLocationAuthorization() {
+        switch CLLocationManager.authorizationStatus() {
+        case .authorizedWhenInUse:
+            mapView.showsUserLocation = true
+            centerViewOnUserLocation()
+            locationManager.startUpdatingLocation()
+            break
+        case .denied:
+            break
+        case .notDetermined:
+            locationManager.requestWhenInUseAuthorization()
+            break
+        case .restricted:
+            break
+        case .authorizedAlways:
+            break
+        @unknown default:
+            fatalError()
         }
     }
+    
+}
+
+extension HomeController: CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        let mapUserLocation: CLLocation = locations[0] as CLLocation
-        
-        let center = CLLocationCoordinate2D(latitude: mapUserLocation.coordinate.latitude, longitude: mapUserLocation.coordinate.longitude)
-        
-        let mapRegion = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
-        
-        mapView.setRegion(mapRegion, animated: true)
+        guard let location = locations.last else { return }
+        let center = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
+        let region = MKCoordinateRegion.init(center: center, latitudinalMeters: regionInMeters, longitudinalMeters: regionInMeters)
+        mapView.setRegion(region, animated: true)
     }
     
-    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        print("Error - locationManager: \(error.localizedDescription)")
-    }
-    
-    func determineCurrentLocation() {
-        locationManager = CLLocationManager()
-        locationManager.delegate = self
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        locationManager.requestAlwaysAuthorization()
-        
-        if CLLocationManager.locationServicesEnabled() {
-            locationManager.startUpdatingLocation()
-        }
+    func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
+            checkLocationAuthorization()
     }
     
     
 }
-
 
 
