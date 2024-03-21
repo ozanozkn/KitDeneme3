@@ -2,7 +2,7 @@ import UIKit
 
 class HamburgerMenuController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
-    let menuItems = ["Main Menu", "Bus Locations", "Bus Stops", "Dealers Locations", "User's Balance", "User Settings", "Share App", "Change Language"]
+    let menuItems = ["Bus Locations", "Bus Stops", "Dealers Locations", "User's Balance", "User Settings", "Share App", "Change Language"]
     let tableView = UITableView()
     
     
@@ -58,38 +58,32 @@ class HamburgerMenuController: UIViewController, UITableViewDelegate, UITableVie
         // Handle menu item selection
         switch indexPath.row {
         case 0:
-            if let sceneDelegate = self.view.window?.windowScene?.delegate as?
-                SceneDelegate {
-                sceneDelegate.checkAuthentication()
-            }
-            break
-        case 1:
             // Navigate to Bus Locations view
             // Example:
             // let busLocationsViewController = BusLocationsViewController()
             // navigationController?.pushViewController(busLocationsViewController, animated: true)
             break
-        case 2:
+        case 1:
             // Navigate to Station Locations view
             let busStopsMapViewController = BusStopsMapViewController()
             navigationController?.pushViewController(busStopsMapViewController, animated: true)
             break
-        case 3:
+        case 2:
             // Navigate to Dealers Locations view
             break
-        case 4:
+        case 3:
             // Navigate to User's Balance view
             break
-        case 5:
+        case 4:
             // User Settings
             let userSettingsController = UserSettingsController()
             navigationController?.pushViewController(userSettingsController, animated: true)
             break
-        case 6:
+        case 5:
             // Share App functionality
             shareApp()
             break
-        case 7:
+        case 6:
             // Change Language functionality
             break
         default:
