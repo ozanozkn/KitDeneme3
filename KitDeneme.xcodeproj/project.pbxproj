@@ -58,6 +58,9 @@
 		F694AE6E2BAB18FD00022953 /* BusStopsMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F694AE6D2BAB18FD00022953 /* BusStopsMapViewController.swift */; };
 		F694AE712BAB1A4D00022953 /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = F694AE702BAB1A4D00022953 /* SwiftyJSON */; };
 		F694AE742BAB1A9400022953 /* bus_stops.json in Resources */ = {isa = PBXBuildFile; fileRef = F694AE732BAB1A9400022953 /* bus_stops.json */; };
+		F6AF30DF2BAC3F7300E06AB3 /* DealerLocationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6AF30DE2BAC3F7300E06AB3 /* DealerLocationsViewController.swift */; };
+		F6AF30E12BAC47A200E06AB3 /* BusLocationsResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6AF30E02BAC47A200E06AB3 /* BusLocationsResponseModel.swift */; };
+		F6AF30E32BAC47CC00E06AB3 /* BusLocationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6AF30E22BAC47CB00E06AB3 /* BusLocationsViewController.swift */; };
 		F6FD93AE2B9A09660075EB99 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6FD93AD2B9A09660075EB99 /* AppDelegate.swift */; };
 		F6FD93B02B9A09660075EB99 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6FD93AF2B9A09660075EB99 /* SceneDelegate.swift */; };
 		F6FD93B72B9A09690075EB99 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F6FD93B62B9A09690075EB99 /* Assets.xcassets */; };
@@ -86,6 +89,9 @@
 		F694AE6B2BAB186800022953 /* BusStopResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusStopResponseModel.swift; sourceTree = "<group>"; };
 		F694AE6D2BAB18FD00022953 /* BusStopsMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusStopsMapViewController.swift; sourceTree = "<group>"; };
 		F694AE732BAB1A9400022953 /* bus_stops.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = bus_stops.json; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.json; };
+		F6AF30DE2BAC3F7300E06AB3 /* DealerLocationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealerLocationsViewController.swift; sourceTree = "<group>"; };
+		F6AF30E02BAC47A200E06AB3 /* BusLocationsResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusLocationsResponseModel.swift; sourceTree = "<group>"; };
+		F6AF30E22BAC47CB00E06AB3 /* BusLocationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusLocationsViewController.swift; sourceTree = "<group>"; };
 		F6FD93AA2B9A09660075EB99 /* KitDeneme.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KitDeneme.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F6FD93AD2B9A09660075EB99 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F6FD93AF2B9A09660075EB99 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -167,6 +173,8 @@
 				F694AE672BAAD2CF00022953 /* HamburgerMenuController.swift */,
 				F694AE692BAAD68D00022953 /* UserSettingsController.swift */,
 				F694AE6D2BAB18FD00022953 /* BusStopsMapViewController.swift */,
+				F6AF30DE2BAC3F7300E06AB3 /* DealerLocationsViewController.swift */,
+				F6AF30E22BAC47CB00E06AB3 /* BusLocationsViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -178,6 +186,7 @@
 				F660FE922BA18620001DCA0A /* LoginUserRequest.swift */,
 				F6808B8F2BA1CF39006ED402 /* User.swift */,
 				F694AE6B2BAB186800022953 /* BusStopResponseModel.swift */,
+				F6AF30E02BAC47A200E06AB3 /* BusLocationsResponseModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -341,6 +350,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F6AF30E32BAC47CC00E06AB3 /* BusLocationsViewController.swift in Sources */,
 				F660FE212B9AEED1001DCA0A /* ForgotPasswordController.swift in Sources */,
 				F660FE732B9B4F36001DCA0A /* AlertManager.swift in Sources */,
 				F660FE252B9AEF37001DCA0A /* HomeController.swift in Sources */,
@@ -352,11 +362,13 @@
 				F694AE682BAAD2CF00022953 /* HamburgerMenuController.swift in Sources */,
 				F660FE6E2B9B096D001DCA0A /* CustomButton.swift in Sources */,
 				F694AE6C2BAB186800022953 /* BusStopResponseModel.swift in Sources */,
+				F6AF30E12BAC47A200E06AB3 /* BusLocationsResponseModel.swift in Sources */,
 				F694AE222BA3155E00022953 /* ConnectivityManager.swift in Sources */,
 				F660FE232B9AEEFE001DCA0A /* RegisterController.swift in Sources */,
 				F660FE972BA19BE3001DCA0A /* Validator.swift in Sources */,
 				F6FD93AE2B9A09660075EB99 /* AppDelegate.swift in Sources */,
 				F660FE6C2B9B04A2001DCA0A /* CustomTextField.swift in Sources */,
+				F6AF30DF2BAC3F7300E06AB3 /* DealerLocationsViewController.swift in Sources */,
 				F660FE882BA17DB2001DCA0A /* RegisterUserRequest.swift in Sources */,
 				F660FE1F2B9AEEAD001DCA0A /* LoginController.swift in Sources */,
 				F6FD93B02B9A09660075EB99 /* SceneDelegate.swift in Sources */,

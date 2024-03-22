@@ -60,32 +60,41 @@ class HamburgerMenuController: UIViewController, UITableViewDelegate, UITableVie
         case 0:
             // Navigate to Bus Locations view
             // Example:
-            // let busLocationsViewController = BusLocationsViewController()
-            // navigationController?.pushViewController(busLocationsViewController, animated: true)
+            let busLocationsViewController = BusLocationsViewController()
+            navigationController?.pushViewController(busLocationsViewController, animated: true)
             break
+            
         case 1:
             // Navigate to Station Locations view
             let busStopsMapViewController = BusStopsMapViewController()
             navigationController?.pushViewController(busStopsMapViewController, animated: true)
             break
+            
         case 2:
             // Navigate to Dealers Locations view
+            let dealerLocationsViewController = DealerLocationsViewController()
+            navigationController?.pushViewController(dealerLocationsViewController, animated: true)
             break
+            
         case 3:
             // Navigate to User's Balance view
             break
+            
         case 4:
             // User Settings
             let userSettingsController = UserSettingsController()
             navigationController?.pushViewController(userSettingsController, animated: true)
             break
+            
         case 5:
             // Share App functionality
             shareApp()
             break
+            
         case 6:
             // Change Language functionality
             break
+            
         default:
             break
         }
