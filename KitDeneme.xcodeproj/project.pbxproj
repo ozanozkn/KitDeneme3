@@ -23,6 +23,7 @@
 		F660FE972BA19BE3001DCA0A /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F660FE962BA19BE3001DCA0A /* Validator.swift */; };
 		F6808B902BA1CF39006ED402 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6808B8F2BA1CF39006ED402 /* User.swift */; };
 		F683281A2BB3F61C001BF44B /* ChangePasswordController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F68328192BB3F61C001BF44B /* ChangePasswordController.swift */; };
+		F683281C2BB40D0E001BF44B /* DeleteAccountController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F683281B2BB40D0E001BF44B /* DeleteAccountController.swift */; };
 		F694AE222BA3155E00022953 /* ConnectivityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F694AE212BA3155E00022953 /* ConnectivityManager.swift */; };
 		F694AE252BA48F9B00022953 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = F694AE242BA48F9B00022953 /* Alamofire */; };
 		F694AE272BA48F9B00022953 /* AlamofireDynamic in Frameworks */ = {isa = PBXBuildFile; productRef = F694AE262BA48F9B00022953 /* AlamofireDynamic */; };
@@ -85,6 +86,7 @@
 		F660FE962BA19BE3001DCA0A /* Validator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
 		F6808B8F2BA1CF39006ED402 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		F68328192BB3F61C001BF44B /* ChangePasswordController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordController.swift; sourceTree = "<group>"; };
+		F683281B2BB40D0E001BF44B /* DeleteAccountController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteAccountController.swift; sourceTree = "<group>"; };
 		F694AE212BA3155E00022953 /* ConnectivityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectivityManager.swift; sourceTree = "<group>"; };
 		F694AE672BAAD2CF00022953 /* HamburgerMenuController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HamburgerMenuController.swift; sourceTree = "<group>"; };
 		F694AE692BAAD68D00022953 /* UserSettingsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettingsController.swift; sourceTree = "<group>"; };
@@ -178,6 +180,7 @@
 				F6AF30DE2BAC3F7300E06AB3 /* DealerLocationsViewController.swift */,
 				F6AF30E22BAC47CB00E06AB3 /* BusLocationsViewController.swift */,
 				F68328192BB3F61C001BF44B /* ChangePasswordController.swift */,
+				F683281B2BB40D0E001BF44B /* DeleteAccountController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -361,6 +364,7 @@
 				F683281A2BB3F61C001BF44B /* ChangePasswordController.swift in Sources */,
 				F660FE842BA17C21001DCA0A /* AuthService.swift in Sources */,
 				F694AE6A2BAAD68D00022953 /* UserSettingsController.swift in Sources */,
+				F683281C2BB40D0E001BF44B /* DeleteAccountController.swift in Sources */,
 				F6808B902BA1CF39006ED402 /* User.swift in Sources */,
 				F660FE932BA18620001DCA0A /* LoginUserRequest.swift in Sources */,
 				F694AE682BAAD2CF00022953 /* HamburgerMenuController.swift in Sources */,

@@ -147,10 +147,14 @@ class LoginController: UIViewController, UITextFieldDelegate {
         
         // MARK: - Tap Gesture Recognizer
         
-        @objc private func dismissKeyboard() {
-            // Dismiss the keyboard when tapping outside of the text fields
-            view.endEditing(true)
-        }
+        
+    @objc private func dismissKeyboard() {
+        
+        // Dismiss the keyboard when tapping outside of the text fields
+        
+        view.endEditing(true)
+        
+    }
 
     
 }

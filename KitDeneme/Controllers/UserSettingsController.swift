@@ -11,12 +11,14 @@ class UserSettingsController: UIViewController {
     
     let logoutButton = UIButton(type: .system)
     let changePasswordButton = UIButton(type: .system)
+    let deleteAccountButton = UIButton(type: .system)
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
         setupLogoutButton()
         setupChangePasswordButton()
+        setupDeleteAccountButton()
     }
     
     private func setupLogoutButton() {
@@ -40,7 +42,7 @@ class UserSettingsController: UIViewController {
     private func setupChangePasswordButton() {
             
             changePasswordButton.setTitle("Change Password", for: .normal)
-            changePasswordButton.setTitleColor(.blue, for: .normal)
+            changePasswordButton.setTitleColor(.systemBlue, for: .normal)
             changePasswordButton.backgroundColor = .white
             changePasswordButton.layer.cornerRadius = 8
             changePasswordButton.layer.borderWidth = 1
@@ -52,6 +54,23 @@ class UserSettingsController: UIViewController {
             NSLayoutConstraint.activate([
                 changePasswordButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
                 changePasswordButton.topAnchor.constraint(equalTo: logoutButton.bottomAnchor, constant: 20)
+            ])
+        }
+    
+    private func setupDeleteAccountButton() {
+            deleteAccountButton.setTitle("Delete Account", for: .normal)
+            deleteAccountButton.setTitleColor(.red, for: .normal)
+            deleteAccountButton.backgroundColor = .white
+            deleteAccountButton.layer.cornerRadius = 8
+            deleteAccountButton.layer.borderWidth = 1
+            deleteAccountButton.layer.borderColor = UIColor.white.cgColor
+            deleteAccountButton.addTarget(self, action: #selector(didTapDeleteAccount), for: .touchUpInside)
+            view.addSubview(deleteAccountButton)
+            
+            deleteAccountButton.translatesAutoresizingMaskIntoConstraints = false
+            NSLayoutConstraint.activate([
+                deleteAccountButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+                deleteAccountButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20) // Position at the bottom
             ])
         }
     
@@ -71,5 +90,10 @@ class UserSettingsController: UIViewController {
     @objc private func didTapChangePassword() {
             let changePasswordController = ChangePasswordController()
             navigationController?.pushViewController(changePasswordController, animated: true)
+        }
+    
+    @objc private func didTapDeleteAccount() {
+            let deleteAccountController = DeleteAccountController()
+            navigationController?.pushViewController(deleteAccountController, animated: true)
         }
 }
