@@ -59,7 +59,6 @@ class HamburgerMenuController: UIViewController, UITableViewDelegate, UITableVie
         switch indexPath.row {
         case 0:
             // Navigate to Bus Locations view
-            // Example:
             let busLocationsViewController = BusLocationsViewController()
             navigationController?.pushViewController(busLocationsViewController, animated: true)
             break
