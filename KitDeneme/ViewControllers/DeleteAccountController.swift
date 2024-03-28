@@ -121,13 +121,13 @@ class DeleteAccountController: UIViewController {
         present(alert, animated: true, completion: nil)
     }
     
+    // MARK: - Tap Gesture Recognizer
+
     func textFieldDidBeginEditing(_ textField: UITextField) {
             // Open the keyboard when a text field is clicked
             textField.becomeFirstResponder()
         }
-        
-        // MARK: - Tap Gesture Recognizer
-        
+                
         
     @objc private func dismissKeyboard() {
         

@@ -65,7 +65,7 @@ class HamburgerMenuController: UIViewController, UITableViewDelegate, UITableVie
             
         case 1:
             // Navigate to Station Locations view
-            let busStopsMapViewController = BusStopsMapViewController()
+            let busStopsMapViewController = BusStopsViewController()
             navigationController?.pushViewController(busStopsMapViewController, animated: true)
             break
             

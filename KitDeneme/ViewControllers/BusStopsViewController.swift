@@ -12,11 +12,7 @@ class BusStopsViewController: UIViewController {
         return map
     }()
     
-    var busStops: [Stop] = [] {
-        didSet {
-            addAnnotations()
-        }
-    }
+    private var viewModel = BusStopsViewModel()
     
     let locationManager = CLLocationManager()
     
@@ -26,8 +22,8 @@ class BusStopsViewController: UIViewController {
         super.viewDidLoad()
         setupUI()
         setupLocationManager()
-        loadBusStopsData()
-        
+        viewModel.delegate = self
+        viewModel.loadBusStopsData()
     }
     
     // MARK: - UI Setup
@@ -37,7 +33,7 @@ class BusStopsViewController: UIViewController {
         title = "Bus Stops"
         
         mapView.delegate = self
-
+        
         view.addSubview(mapView)
         NSLayoutConstraint.activate([
             mapView.topAnchor.constraint(equalTo: view.topAnchor),
@@ -55,30 +51,12 @@ class BusStopsViewController: UIViewController {
         locationManager.startUpdatingLocation()
     }
     
-    // MARK: - Bus Stops Data
-    
-    private func loadBusStopsData() {
-        if let busStopsData = try? Data(contentsOf: Bundle.main.url(forResource: "bus_stops", withExtension: "json")!) {
-            do {
-                let busStopsResponseModel = try JSONDecoder().decode(BusStopsResponseModel.self, from: busStopsData)
-                self.busStops = busStopsResponseModel.stops
-                
-                print("DEBUG PRINT:", "success decoding")
-                
-            } catch {
-                print("Error decoding bus stops data: \(error)")
-            }
-        } else {
-            print("Failed to load bus stops data")
-        }
-    }
-    
     // MARK: - Map Annotations
     
-    private func addAnnotations() {
+    private func addAnnotations(_ stops: [Stop]) {
         DispatchQueue.main.async { [weak self] in
             guard let self = self else { return }
-            for stop in self.busStops {
+            for stop in stops {
                 let annotation = MKPointAnnotation()
                 annotation.coordinate = CLLocationCoordinate2D(latitude: stop.latitude, longitude: stop.longitude)
                 annotation.title = stop.name
@@ -139,5 +117,17 @@ class BusStopAnnotationView: MKAnnotationView {
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+}
+
+// MARK: - BusStopsViewModelDelegate
+
+extension BusStopsViewController: BusStopsViewModelDelegate {
+    func didLoadBusStopsData(_ stops: [Stop]) {
+        addAnnotations(stops)
+    }
+    
+    func didFailLoadingBusStopsData(_ error: Error) {
+        print("Error loading bus stops data: \(error)")
     }
 }

@@ -13,8 +13,9 @@ class BusLocationsViewController: UIViewController {
     }()
     
     let locationManager = CLLocationManager()
-    var busLocations: [Vehicle] = []
-    var timer: Timer?
+    private var viewModel = BusLocationsViewModel() // Create an instance of BusLocationsViewModel
+    private var busLocations: [Vehicle] = [] // Store the fetched bus locations
+    private var timer: Timer? // Timer to periodically update bus locations
     
     // MARK: - Lifecycle
     
@@ -22,12 +23,20 @@ class BusLocationsViewController: UIViewController {
         super.viewDidLoad()
         setupUI()
         setupLocationManager()
-        fetchLiveBusLocations() // Fetch live bus locations
+        
+        mapView.delegate = self // Set the delegate
+        
+        // Set the view model delegate
+        viewModel.delegate = self
+        // Start fetching live bus locations
+        viewModel.fetchLiveBusLocations()
+        
+        // Start the timer to update bus locations every 15 seconds
         startTimer()
     }
     
     deinit {
-        stopTimer()
+        stopTimer() // Invalidate the timer when the view controller is deallocated
     }
     
     // MARK: - UI Setup
@@ -53,62 +62,6 @@ class BusLocationsViewController: UIViewController {
         locationManager.startUpdatingLocation()
     }
     
-    // MARK: - Fetch Live Bus Locations
-    
-    private func fetchLiveBusLocations() {
-        // Create URL object from the provided URL string
-        let endpoint = "https://tfe-opendata.com/api/v1/vehicle_locations"
-        
-        if let url = URL(string: endpoint) {
-            // Create a URLSession task for fetching data from the URL
-            let task = URLSession.shared.dataTask(with: url) { [weak self] data, response, error in
-                guard let self = self else { return }
-                
-                // Check for errors
-                if let error = error {
-                    print("Error: \(error)")
-                    return
-                }
-                
-                // Check if data is available
-                guard let data = data else { return }
-                
-                do {
-                    // Parse JSON data
-                    let decoder = JSONDecoder()
-                    let busLocationsResponseModel = try decoder.decode(BusLocationsResponseModel.self, from: data)
-                    
-                    print("DEBUG PRINT:", "success decoding")
-                    
-                    // Update bus locations
-                    self.busLocations = busLocationsResponseModel.vehicles
-                    self.addBusAnnotations()
-                } catch {
-                    print("Error decoding JSON: \(error)")
-                }
-            }
-            
-            // Start the URLSession task
-            task.resume()
-        } else {
-            print("Invalid URL")
-        }
-    }
-    
-    // MARK: - Map Annotations
-    
-    private func addBusAnnotations() {
-        DispatchQueue.main.async { [weak self] in
-            guard let self = self else { return }
-            self.mapView.removeAnnotations(self.mapView.annotations) // Clear previous annotations
-            for vehicle in self.busLocations {
-                let annotation = MKPointAnnotation()
-                annotation.coordinate = CLLocationCoordinate2D(latitude: vehicle.latitude, longitude: vehicle.longitude)
-                self.mapView.addAnnotation(annotation)
-            }
-        }
-    }
-    
     // MARK: - Timer
     
     private func startTimer() {
@@ -121,7 +74,7 @@ class BusLocationsViewController: UIViewController {
     }
     
     @objc private func updateBusLocations() {
-        fetchLiveBusLocations() // Fetch live bus locations periodically
+        viewModel.fetchLiveBusLocations() // Fetch live bus locations periodically
     }
 }
 
@@ -138,6 +91,60 @@ extension BusLocationsViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         if status == .authorizedWhenInUse {
             locationManager.startUpdatingLocation()
+        }
+    }
+}
+
+// MARK: - MKMapViewDelegate
+
+extension BusLocationsViewController: MKMapViewDelegate {
+    
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        guard !(annotation is MKUserLocation) else { return nil }
+        
+        let identifier = "busAnnotation"
+        var annotationView: MKAnnotationView
+        
+        if let dequeuedView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier) {
+            annotationView = dequeuedView
+        } else {
+            annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+            annotationView.canShowCallout = true
+        }
+        
+        // Set the annotation image
+        annotationView.image = UIImage(named: "bus")
+        
+        // Set the frame for the annotation view
+        annotationView.frame = CGRect(x: 0, y: 0, width: 20, height: 20)
+        
+        return annotationView
+    }
+}
+
+// MARK: - BusLocationsViewModelDelegate
+
+extension BusLocationsViewController: BusLocationsViewModelDelegate {
+    func didUpdateBusLocations(_ locations: [Vehicle]) {
+        busLocations = locations // Update the stored bus locations
+        addBusAnnotations() // Add annotations to the map
+    }
+    
+    func didFailFetchingBusLocations(with error: Error) {
+        print("Error fetching bus locations: \(error)")
+    }
+    
+    private func addBusAnnotations() {
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else { return }
+            self.mapView.removeAnnotations(self.mapView.annotations) // Clear previous annotations
+            for vehicle in self.busLocations {
+                let annotation = MKPointAnnotation()
+                annotation.coordinate = CLLocationCoordinate2D(latitude: vehicle.latitude, longitude: vehicle.longitude)
+                annotation.title = "Journey: " + (vehicle.journeyID ?? "TBD")
+                annotation.subtitle = "Destination: " + (vehicle.destination ?? "TBD")
+                self.mapView.addAnnotation(annotation)
+            }
         }
     }
 }

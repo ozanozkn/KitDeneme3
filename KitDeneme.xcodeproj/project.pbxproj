@@ -24,6 +24,8 @@
 		F6808B902BA1CF39006ED402 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6808B8F2BA1CF39006ED402 /* User.swift */; };
 		F683281A2BB3F61C001BF44B /* ChangePasswordController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F68328192BB3F61C001BF44B /* ChangePasswordController.swift */; };
 		F683281C2BB40D0E001BF44B /* DeleteAccountController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F683281B2BB40D0E001BF44B /* DeleteAccountController.swift */; };
+		F68328232BB54DB2001BF44B /* BusStopsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F68328222BB54DB2001BF44B /* BusStopsViewModel.swift */; };
+		F68328252BB55C24001BF44B /* BusLocationsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F68328242BB55C24001BF44B /* BusLocationsViewModel.swift */; };
 		F694AE222BA3155E00022953 /* ConnectivityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F694AE212BA3155E00022953 /* ConnectivityManager.swift */; };
 		F694AE252BA48F9B00022953 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = F694AE242BA48F9B00022953 /* Alamofire */; };
 		F694AE272BA48F9B00022953 /* AlamofireDynamic in Frameworks */ = {isa = PBXBuildFile; productRef = F694AE262BA48F9B00022953 /* AlamofireDynamic */; };
@@ -57,7 +59,7 @@
 		F694AE682BAAD2CF00022953 /* HamburgerMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F694AE672BAAD2CF00022953 /* HamburgerMenuController.swift */; };
 		F694AE6A2BAAD68D00022953 /* UserSettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F694AE692BAAD68D00022953 /* UserSettingsController.swift */; };
 		F694AE6C2BAB186800022953 /* BusStopResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F694AE6B2BAB186800022953 /* BusStopResponseModel.swift */; };
-		F694AE6E2BAB18FD00022953 /* BusStopsMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F694AE6D2BAB18FD00022953 /* BusStopsMapViewController.swift */; };
+		F694AE6E2BAB18FD00022953 /* BusStopsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F694AE6D2BAB18FD00022953 /* BusStopsViewController.swift */; };
 		F694AE712BAB1A4D00022953 /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = F694AE702BAB1A4D00022953 /* SwiftyJSON */; };
 		F694AE742BAB1A9400022953 /* bus_stops.json in Resources */ = {isa = PBXBuildFile; fileRef = F694AE732BAB1A9400022953 /* bus_stops.json */; };
 		F6AF30DF2BAC3F7300E06AB3 /* DealerLocationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6AF30DE2BAC3F7300E06AB3 /* DealerLocationsViewController.swift */; };
@@ -87,11 +89,13 @@
 		F6808B8F2BA1CF39006ED402 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		F68328192BB3F61C001BF44B /* ChangePasswordController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordController.swift; sourceTree = "<group>"; };
 		F683281B2BB40D0E001BF44B /* DeleteAccountController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteAccountController.swift; sourceTree = "<group>"; };
+		F68328222BB54DB2001BF44B /* BusStopsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusStopsViewModel.swift; sourceTree = "<group>"; };
+		F68328242BB55C24001BF44B /* BusLocationsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusLocationsViewModel.swift; sourceTree = "<group>"; };
 		F694AE212BA3155E00022953 /* ConnectivityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectivityManager.swift; sourceTree = "<group>"; };
 		F694AE672BAAD2CF00022953 /* HamburgerMenuController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HamburgerMenuController.swift; sourceTree = "<group>"; };
 		F694AE692BAAD68D00022953 /* UserSettingsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettingsController.swift; sourceTree = "<group>"; };
 		F694AE6B2BAB186800022953 /* BusStopResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusStopResponseModel.swift; sourceTree = "<group>"; };
-		F694AE6D2BAB18FD00022953 /* BusStopsMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusStopsMapViewController.swift; sourceTree = "<group>"; };
+		F694AE6D2BAB18FD00022953 /* BusStopsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusStopsViewController.swift; sourceTree = "<group>"; };
 		F694AE732BAB1A9400022953 /* bus_stops.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = bus_stops.json; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.json; };
 		F6AF30DE2BAC3F7300E06AB3 /* DealerLocationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealerLocationsViewController.swift; sourceTree = "<group>"; };
 		F6AF30E02BAC47A200E06AB3 /* BusLocationsResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusLocationsResponseModel.swift; sourceTree = "<group>"; };
@@ -167,7 +171,7 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
-		F660FE712B9B4F03001DCA0A /* Controllers */ = {
+		F660FE712B9B4F03001DCA0A /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
 				F660FE242B9AEF37001DCA0A /* HomeController.swift */,
@@ -176,13 +180,13 @@
 				F660FE202B9AEED1001DCA0A /* ForgotPasswordController.swift */,
 				F694AE672BAAD2CF00022953 /* HamburgerMenuController.swift */,
 				F694AE692BAAD68D00022953 /* UserSettingsController.swift */,
-				F694AE6D2BAB18FD00022953 /* BusStopsMapViewController.swift */,
 				F6AF30DE2BAC3F7300E06AB3 /* DealerLocationsViewController.swift */,
+				F694AE6D2BAB18FD00022953 /* BusStopsViewController.swift */,
 				F6AF30E22BAC47CB00E06AB3 /* BusLocationsViewController.swift */,
 				F68328192BB3F61C001BF44B /* ChangePasswordController.swift */,
 				F683281B2BB40D0E001BF44B /* DeleteAccountController.swift */,
 			);
-			path = Controllers;
+			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 		F660FE862BA17D74001DCA0A /* Models */ = {
@@ -202,6 +206,26 @@
 			children = (
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F683281D2BB549F4001BF44B /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				F660FE722B9B4F36001DCA0A /* AlertManager.swift */,
+				F660FE832BA17C20001DCA0A /* AuthService.swift */,
+				F660FE962BA19BE3001DCA0A /* Validator.swift */,
+				F694AE212BA3155E00022953 /* ConnectivityManager.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		F68328212BB54DA0001BF44B /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				F68328222BB54DB2001BF44B /* BusStopsViewModel.swift */,
+				F68328242BB55C24001BF44B /* BusLocationsViewModel.swift */,
+			);
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 		F694AE722BAB1A6900022953 /* JSON */ = {
@@ -232,13 +256,11 @@
 		F6FD93AC2B9A09660075EB99 /* KitDeneme */ = {
 			isa = PBXGroup;
 			children = (
+				F683281D2BB549F4001BF44B /* Managers */,
 				F694AE722BAB1A6900022953 /* JSON */,
-				F660FE722B9B4F36001DCA0A /* AlertManager.swift */,
-				F660FE832BA17C20001DCA0A /* AuthService.swift */,
-				F660FE962BA19BE3001DCA0A /* Validator.swift */,
-				F694AE212BA3155E00022953 /* ConnectivityManager.swift */,
 				F660FE862BA17D74001DCA0A /* Models */,
-				F660FE712B9B4F03001DCA0A /* Controllers */,
+				F68328212BB54DA0001BF44B /* ViewModels */,
+				F660FE712B9B4F03001DCA0A /* ViewControllers */,
 				F660FE262B9AEF6F001DCA0A /* Views */,
 				F660FE1B2B9AEDD3001DCA0A /* Supporting */,
 				F6FD93BB2B9A09690075EB99 /* Info.plist */,
@@ -360,17 +382,19 @@
 				F660FE212B9AEED1001DCA0A /* ForgotPasswordController.swift in Sources */,
 				F660FE732B9B4F36001DCA0A /* AlertManager.swift in Sources */,
 				F660FE252B9AEF37001DCA0A /* HomeController.swift in Sources */,
-				F694AE6E2BAB18FD00022953 /* BusStopsMapViewController.swift in Sources */,
+				F694AE6E2BAB18FD00022953 /* BusStopsViewController.swift in Sources */,
 				F683281A2BB3F61C001BF44B /* ChangePasswordController.swift in Sources */,
 				F660FE842BA17C21001DCA0A /* AuthService.swift in Sources */,
 				F694AE6A2BAAD68D00022953 /* UserSettingsController.swift in Sources */,
 				F683281C2BB40D0E001BF44B /* DeleteAccountController.swift in Sources */,
 				F6808B902BA1CF39006ED402 /* User.swift in Sources */,
 				F660FE932BA18620001DCA0A /* LoginUserRequest.swift in Sources */,
+				F68328232BB54DB2001BF44B /* BusStopsViewModel.swift in Sources */,
 				F694AE682BAAD2CF00022953 /* HamburgerMenuController.swift in Sources */,
 				F660FE6E2B9B096D001DCA0A /* CustomButton.swift in Sources */,
 				F694AE6C2BAB186800022953 /* BusStopResponseModel.swift in Sources */,
 				F6AF30E12BAC47A200E06AB3 /* BusLocationsResponseModel.swift in Sources */,
+				F68328252BB55C24001BF44B /* BusLocationsViewModel.swift in Sources */,
 				F694AE222BA3155E00022953 /* ConnectivityManager.swift in Sources */,
 				F660FE232B9AEEFE001DCA0A /* RegisterController.swift in Sources */,
 				F660FE972BA19BE3001DCA0A /* Validator.swift in Sources */,

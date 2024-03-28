@@ -40,19 +40,7 @@ class HomeController: UIViewController, MKMapViewDelegate {
     var locationManager = CLLocationManager()
     let regionInMeters: Double = 10000
 
-//    private let logoutButton: UIButton = {
-//            
-//        let button = UIButton(type: .system)
-//        button.setTitle("Logout", for: .normal)
-//        button.setTitleColor(.red, for: .normal)
-//        button.backgroundColor = .white
-//        button.layer.cornerRadius = 8
-//        button.layer.borderWidth = 1
-//        button.layer.borderColor = UIColor.white.cgColor
-//        button.addTarget(self, action: #selector(didTapLogout), for: .touchUpInside)
-//            return button
-//        }()
-    
+
     
     
     // MARK: LifeCycle
@@ -74,12 +62,10 @@ class HomeController: UIViewController, MKMapViewDelegate {
         
 
         self.view.addSubview(mapView)
-//        self.view.addSubview(logoutButton)
         self.view.addSubview(menuButton)
                 
         menuButton.translatesAutoresizingMaskIntoConstraints = false
         mapView.translatesAutoresizingMaskIntoConstraints = false
-//        logoutButton.translatesAutoresizingMaskIntoConstraints = false
 
         
         NSLayoutConstraint.activate([
@@ -88,20 +74,14 @@ class HomeController: UIViewController, MKMapViewDelegate {
             mapView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
             mapView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
             
-//            logoutButton.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 10),
-//            logoutButton.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -16),
-//            logoutButton.widthAnchor.constraint(equalToConstant: 100),
-//            logoutButton.heightAnchor.constraint(equalToConstant: 40),
-//            
+         
             menuButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 16),
             menuButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 25),
             menuButton.widthAnchor.constraint(equalToConstant: 40),
             menuButton.heightAnchor.constraint(equalToConstant: 40)
             
             
-//            label.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
-//            label.centerYAnchor.constraint(equalTo: self.view.centerYAnchor),
-//
+
             
         ])
     }
