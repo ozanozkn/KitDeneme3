@@ -120,7 +120,7 @@ class ChangePasswordController: UIViewController {
         
         user.reauthenticate(with: EmailAuthProvider.credential(withEmail: user.email!, password: currentPassword)) { [weak self] _, error in
             guard let self = self else { return }
-            if let error = error {
+            if error != nil {
                 // Show an alert if reauthentication fails
                 self.showAlert(message: "Error changing password, please fill the fields correctly")
                 return

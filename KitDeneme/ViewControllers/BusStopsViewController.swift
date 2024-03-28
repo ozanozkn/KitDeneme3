@@ -2,7 +2,7 @@ import UIKit
 import MapKit
 import CoreLocation
 
-class BusStopsMapViewController: UIViewController {
+class BusStopsViewController: UIViewController {
     
     // MARK: - Properties
     
@@ -36,6 +36,8 @@ class BusStopsMapViewController: UIViewController {
         view.backgroundColor = .white
         title = "Bus Stops"
         
+        mapView.delegate = self
+
         view.addSubview(mapView)
         NSLayoutConstraint.activate([
             mapView.topAnchor.constraint(equalTo: view.topAnchor),
@@ -81,6 +83,8 @@ class BusStopsMapViewController: UIViewController {
                 annotation.coordinate = CLLocationCoordinate2D(latitude: stop.latitude, longitude: stop.longitude)
                 annotation.title = stop.name
                 annotation.subtitle = stop.locality
+                
+                let annotationView = BusStopAnnotationView(annotation: annotation, reuseIdentifier: "busStop")
                 self.mapView.addAnnotation(annotation)
             }
         }
@@ -89,7 +93,7 @@ class BusStopsMapViewController: UIViewController {
 
 // MARK: - CLLocationManagerDelegate
 
-extension BusStopsMapViewController: CLLocationManagerDelegate {
+extension BusStopsViewController: CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let location = locations.last else { return }
@@ -101,5 +105,39 @@ extension BusStopsMapViewController: CLLocationManagerDelegate {
         if status == .authorizedWhenInUse {
             locationManager.startUpdatingLocation()
         }
+    }
+}
+
+// MARK: - MKMapViewDelegate
+
+extension BusStopsViewController: MKMapViewDelegate {
+    
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        guard !(annotation is MKUserLocation) else { return nil }
+        
+        let identifier = "busStop"
+        var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier)
+        
+        if annotationView == nil {
+            annotationView = BusStopAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+            annotationView?.canShowCallout = true
+        } else {
+            annotationView?.annotation = annotation
+        }
+        
+        return annotationView
+    }
+}
+
+// MARK: - Custom Annotation View
+
+class BusStopAnnotationView: MKAnnotationView {
+    override init(annotation: MKAnnotation?, reuseIdentifier: String?) {
+        super.init(annotation: annotation, reuseIdentifier: reuseIdentifier)
+        self.image = UIImage(named: "bus_stop") // Set the image to bus_stop.png
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 }
