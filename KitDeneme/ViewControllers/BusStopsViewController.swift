@@ -62,7 +62,7 @@ class BusStopsViewController: UIViewController {
                 annotation.title = stop.name
                 annotation.subtitle = stop.locality
                 
-                let annotationView = BusStopAnnotationView(annotation: annotation, reuseIdentifier: "busStop")
+                _ = BusStopAnnotationView(annotation: annotation, reuseIdentifier: "busStop")
                 self.mapView.addAnnotation(annotation)
             }
         }

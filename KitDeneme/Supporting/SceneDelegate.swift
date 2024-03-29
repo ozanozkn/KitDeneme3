@@ -44,12 +44,16 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         if Auth.auth().currentUser == nil {
             self.goToController(with: LoginController())
         } else {
-            self.goToController(with: HomeController())
+            if Auth.auth().currentUser!.isEmailVerified {
+                self.goToController(with: HomeController())
+            } else {
+                self.goToController(with: LoginController())
+            }
         }
         
     }
 
-    private func goToController(with viewController: UIViewController) {
+     func goToController(with viewController: UIViewController) {
         DispatchQueue.main.async { [weak self] in
             UIView.animate(withDuration: 0.25) {
                 self?.window?.layer.opacity = 0

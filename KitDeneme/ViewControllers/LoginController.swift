@@ -6,7 +6,7 @@
 //
 
 import UIKit
-
+import Firebase
 class LoginController: UIViewController, UITextFieldDelegate {
 
     private let headerView = AuthHeaderView(title: "Sign In", subTitle: "Sign in to your account")
@@ -119,12 +119,25 @@ class LoginController: UIViewController, UITextFieldDelegate {
                 return
             }
             
-            if let sceneDelegate = self.view.window?.windowScene?.delegate as?
-                SceneDelegate {
-                sceneDelegate.checkAuthentication()
-            } else {
-                AlertManager.showSignInErrorAlert(on: self)
+            if let user = Auth.auth().currentUser {
+                if user.isEmailVerified {
+                    DispatchQueue.main.async {
+                        if let sceneDelegate = self.view.window?.windowScene?.delegate as?
+                            SceneDelegate {
+                            sceneDelegate.checkAuthentication()
+                        } else {
+                            AlertManager.showSignInErrorAlert(on: self)
+                        }
+                    }
+                } else {
+                    DispatchQueue.main.async {
+                        let alert = UIAlertController(title: "Verification Required", message: "Please verify your email to use the application, verification link has been sent to your email address.", preferredStyle: .alert)
+                        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                        self.present(alert, animated: true, completion: nil)
+                    }
+                }
             }
+            
         }
    
     }

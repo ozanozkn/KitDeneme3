@@ -26,6 +26,8 @@
 		F683281C2BB40D0E001BF44B /* DeleteAccountController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F683281B2BB40D0E001BF44B /* DeleteAccountController.swift */; };
 		F68328232BB54DB2001BF44B /* BusStopsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F68328222BB54DB2001BF44B /* BusStopsViewModel.swift */; };
 		F68328252BB55C24001BF44B /* BusLocationsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F68328242BB55C24001BF44B /* BusLocationsViewModel.swift */; };
+		F68328272BB57D7C001BF44B /* CustomFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = F68328262BB57D7C001BF44B /* CustomFrame.swift */; };
+		F68328292BB69EBD001BF44B /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F68328282BB69EBD001BF44B /* RegisterViewModel.swift */; };
 		F694AE222BA3155E00022953 /* ConnectivityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F694AE212BA3155E00022953 /* ConnectivityManager.swift */; };
 		F694AE252BA48F9B00022953 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = F694AE242BA48F9B00022953 /* Alamofire */; };
 		F694AE272BA48F9B00022953 /* AlamofireDynamic in Frameworks */ = {isa = PBXBuildFile; productRef = F694AE262BA48F9B00022953 /* AlamofireDynamic */; };
@@ -91,6 +93,8 @@
 		F683281B2BB40D0E001BF44B /* DeleteAccountController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteAccountController.swift; sourceTree = "<group>"; };
 		F68328222BB54DB2001BF44B /* BusStopsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusStopsViewModel.swift; sourceTree = "<group>"; };
 		F68328242BB55C24001BF44B /* BusLocationsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusLocationsViewModel.swift; sourceTree = "<group>"; };
+		F68328262BB57D7C001BF44B /* CustomFrame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomFrame.swift; sourceTree = "<group>"; };
+		F68328282BB69EBD001BF44B /* RegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = "<group>"; };
 		F694AE212BA3155E00022953 /* ConnectivityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectivityManager.swift; sourceTree = "<group>"; };
 		F694AE672BAAD2CF00022953 /* HamburgerMenuController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HamburgerMenuController.swift; sourceTree = "<group>"; };
 		F694AE692BAAD68D00022953 /* UserSettingsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettingsController.swift; sourceTree = "<group>"; };
@@ -167,6 +171,7 @@
 				F660FE272B9AF09B001DCA0A /* AuthHeaderView.swift */,
 				F660FE6B2B9B04A2001DCA0A /* CustomTextField.swift */,
 				F660FE6D2B9B096D001DCA0A /* CustomButton.swift */,
+				F68328262BB57D7C001BF44B /* CustomFrame.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -224,6 +229,7 @@
 			children = (
 				F68328222BB54DB2001BF44B /* BusStopsViewModel.swift */,
 				F68328242BB55C24001BF44B /* BusLocationsViewModel.swift */,
+				F68328282BB69EBD001BF44B /* RegisterViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -379,11 +385,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				F6AF30E32BAC47CC00E06AB3 /* BusLocationsViewController.swift in Sources */,
+				F68328292BB69EBD001BF44B /* RegisterViewModel.swift in Sources */,
 				F660FE212B9AEED1001DCA0A /* ForgotPasswordController.swift in Sources */,
 				F660FE732B9B4F36001DCA0A /* AlertManager.swift in Sources */,
 				F660FE252B9AEF37001DCA0A /* HomeController.swift in Sources */,
 				F694AE6E2BAB18FD00022953 /* BusStopsViewController.swift in Sources */,
 				F683281A2BB3F61C001BF44B /* ChangePasswordController.swift in Sources */,
+				F68328272BB57D7C001BF44B /* CustomFrame.swift in Sources */,
 				F660FE842BA17C21001DCA0A /* AuthService.swift in Sources */,
 				F694AE6A2BAAD68D00022953 /* UserSettingsController.swift in Sources */,
 				F683281C2BB40D0E001BF44B /* DeleteAccountController.swift in Sources */,

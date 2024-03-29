@@ -21,6 +21,7 @@ class DealerLocationsViewController: UIViewController {
         setupUI()
         setupLocationManager()
         addDealerLocations()
+        
     }
     
     // MARK: - UI Setup
@@ -28,7 +29,8 @@ class DealerLocationsViewController: UIViewController {
     private func setupUI() {
         view.backgroundColor = .white
         title = "Dealer Locations"
-        
+        mapView.delegate = self
+
         view.addSubview(mapView)
         NSLayoutConstraint.activate([
             mapView.topAnchor.constraint(equalTo: view.topAnchor),
@@ -85,3 +87,27 @@ extension DealerLocationsViewController: CLLocationManagerDelegate {
         }
     }
 }
+
+// MARK: - MKMapViewDelegate
+
+extension DealerLocationsViewController: MKMapViewDelegate {
+    
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        guard !(annotation is MKUserLocation) else { return nil }
+        
+        let identifier = "dealerAnnotation"
+        var annotationView: MKAnnotationView
+        
+        if let dequeuedView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier) as? MKMarkerAnnotationView {
+            dequeuedView.annotation = annotation
+            annotationView = dequeuedView
+        } else {
+            annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+            annotationView.canShowCallout = true
+            annotationView.image = UIImage(named: "dealer") // Set custom image for the annotation view
+        }
+        
+        return annotationView
+    }
+}
+

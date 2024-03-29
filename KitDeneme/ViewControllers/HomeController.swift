@@ -35,13 +35,18 @@ class HomeController: UIViewController, MKMapViewDelegate {
             button.addTarget(self, action: #selector(didTapMenu), for: .touchUpInside)
             return button
         }()
+    
+    let usernameLabel: CustomLabel = {
+            let label = CustomLabel(text: "", fontSize: 16)
+            label.hasBackground = true // Set background for the label
+            return label
+        }()
         
+    
     
     var locationManager = CLLocationManager()
     let regionInMeters: Double = 10000
 
-
-    
     
     // MARK: LifeCycle
     
@@ -52,7 +57,19 @@ class HomeController: UIViewController, MKMapViewDelegate {
         
         checkLocationServices()
         
-
+        
+        AuthService.shared.fetchUser { [weak self] user, error in
+            guard let self = self else { return }
+            if let error = error {
+                AlertManager.showFetchingUserError(on: self, with: error)
+                return
+            }
+            
+            if let user = user {
+                self.usernameLabel.text = "Hello \(user.username)!"
+            }
+            
+        }
     }
     
     
@@ -63,9 +80,11 @@ class HomeController: UIViewController, MKMapViewDelegate {
 
         self.view.addSubview(mapView)
         self.view.addSubview(menuButton)
+        self.view.addSubview(usernameLabel)
                 
         menuButton.translatesAutoresizingMaskIntoConstraints = false
         mapView.translatesAutoresizingMaskIntoConstraints = false
+        usernameLabel.translatesAutoresizingMaskIntoConstraints = false
 
         
         NSLayoutConstraint.activate([
@@ -75,12 +94,15 @@ class HomeController: UIViewController, MKMapViewDelegate {
             mapView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
             
          
-            menuButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 16),
+            menuButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 1),
             menuButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 25),
             menuButton.widthAnchor.constraint(equalToConstant: 40),
-            menuButton.heightAnchor.constraint(equalToConstant: 40)
+            menuButton.heightAnchor.constraint(equalToConstant: 40),
             
-            
+            usernameLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 1),
+            usernameLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 225),
+            usernameLabel.widthAnchor.constraint(equalToConstant: 150),
+            usernameLabel.heightAnchor.constraint(equalToConstant: 40)
 
             
         ])
@@ -142,20 +164,6 @@ class HomeController: UIViewController, MKMapViewDelegate {
     }
 
 
-
-    
-//    @objc private func didTapLogout() {
-//        AuthService.shared.signOut { [weak self] error in
-//            guard let self = self else { return }
-//            if let error = error {
-//                AlertManager.showLogoutError(on: self, with: error)
-//            }
-//        }
-//        
-//        if let sceneDelegate = self.view.window?.windowScene?.delegate as? SceneDelegate {
-//            sceneDelegate.checkAuthentication()
-//        }
-//    }
     
     func setupLocationManager() {
         locationManager.delegate = self
@@ -176,7 +184,7 @@ class HomeController: UIViewController, MKMapViewDelegate {
                 self.setupLocationManager()
                 self.checkLocationAuthorization()
             } else {
-                // show alert letting the user know they have to turn this on
+                AlertManager.showLocationDataError(on: self, title: "Location Permission", message: "Please turn on your location data to use the application.")
             }
         }
         

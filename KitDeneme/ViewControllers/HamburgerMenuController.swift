@@ -71,6 +71,10 @@ class HamburgerMenuController: UIViewController, UITableViewDelegate, UITableVie
             
         case 2:
             // Navigate to Dealers Locations view
+//            if let sceneDelegate = self.view.window?.windowScene?.delegate as?
+//                SceneDelegate {
+//                sceneDelegate.goToController(with: DealerLocationsViewController())
+//            }
             let dealerLocationsViewController = DealerLocationsViewController()
             navigationController?.pushViewController(dealerLocationsViewController, animated: true)
             break

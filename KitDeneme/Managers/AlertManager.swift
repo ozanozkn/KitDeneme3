@@ -69,7 +69,7 @@ extension AlertManager {
 // MARK: - Forgot Password
 extension AlertManager {
     public static func showPasswordResetSent(on vc: UIViewController) {
-        self.showBasicAlert(on: vc, title: "Password Resent Sent", message: nil)
+        self.showBasicAlert(on: vc, title: "Password Reset", message: "Password reset mail has been sent to your email address.")
     }
     
     public static func showErrorSendingPasswordReset(on vc: UIViewController, with error: Error) {
@@ -99,6 +99,12 @@ extension AlertManager {
 extension AlertManager {
     public static func showConnectionError(on vc: UIViewController) {
         showBasicAlert(on: vc, title: "Error Connecting to the Internet", message: nil)
+    }
+}
+
+extension AlertManager {
+    public static func mailVerificationSent(on vc: UIViewController) {
+        showBasicAlert(on: vc, title: "Verification Sent", message: "Please verify your email")
     }
 }
 

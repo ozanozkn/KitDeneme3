@@ -105,4 +105,19 @@ class AuthService {
             }
     }
     
+    public func sendEmailVerification(completion: @escaping (Bool, Error?) -> Void) {
+        if let currentUser = Auth.auth().currentUser {
+            currentUser.sendEmailVerification { error in
+                if let error = error {
+                    completion(false, error)
+                } else {
+                    completion(true, nil)
+                }
+            }
+        } else {
+            // No current user found
+            completion(false, NSError(domain: "AuthService", code: -1, userInfo: [NSLocalizedDescriptionKey: "No user logged in"]))
+        }
+    }
+    
 }
