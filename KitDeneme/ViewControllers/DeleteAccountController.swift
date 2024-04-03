@@ -91,11 +91,16 @@ class DeleteAccountController: UIViewController {
     }
     
     private func deleteAccount() {
+        guard let userID = Auth.auth().currentUser?.uid else {
+            return
+        }
+        
         Auth.auth().currentUser?.delete { [weak self] error in
             guard let self = self else { return }
             if let error = error {
                 self.showAlert(message: "Error: \(error.localizedDescription)")
             } else {
+                print("call works and doc deleted")
                 self.showAlertWithCompletion(message: "Account deleted successfully.") {
                     if let sceneDelegate = self.view.window?.windowScene?.delegate as? SceneDelegate {
                         sceneDelegate.checkAuthentication()
@@ -104,6 +109,20 @@ class DeleteAccountController: UIViewController {
             }
             
         }
+        
+        AuthService.shared.deleteUserData(forUserID: userID) { error in
+            if error != nil {
+                print("error in calling")
+            } else {
+                print("success calling")
+            }
+            
+        }
+        
+            
+        
+        
+        
     }
     
     private func showAlert(message: String) {

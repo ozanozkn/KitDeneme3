@@ -44,7 +44,8 @@ class AuthService {
                 .document(resultUser.uid)
                 .setData([
                     "username": username,
-                    "email": email
+                    "email": email,
+                    "balance": 25
                     
                 ]) { error in
                     if let error = error {
@@ -98,8 +99,9 @@ class AuthService {
                 if let snapshot = snapshot,
                    let snapshotData = snapshot.data(),
                    let username = snapshotData["username"] as? String,
+                   let balance = snapshotData["balance"] as? Double,
                    let email = snapshotData["email"] as? String {
-                    let user = User(username: username, email: email, userUID: userUID)
+                    let user = User(username: username, email: email, userUID: userUID, balance: balance)
                     completion(user, nil)
                 }
             }
@@ -120,4 +122,20 @@ class AuthService {
         }
     }
     
+    public func deleteUserData(forUserID userUID: String, completion: @escaping (Error?) -> Void) {
+        
+        
+        let db = Firestore.firestore()
+        
+        
+        db.collection("users").document(userUID).delete { error in
+            if let error = error {
+                print("error removing doc")
+            } else {
+                print("doc removed")
+            }
+        }
+        
+        
+    }
 }
