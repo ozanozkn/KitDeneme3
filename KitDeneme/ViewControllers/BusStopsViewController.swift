@@ -2,7 +2,7 @@ import UIKit
 import MapKit
 import CoreLocation
 
-class BusStopsViewController: UIViewController {
+class BusStopsViewController: UIViewController, MKMapViewDelegate {
     
     // MARK: - Properties
     
@@ -88,10 +88,11 @@ extension BusStopsViewController: CLLocationManagerDelegate {
 
 // MARK: - MKMapViewDelegate
 
-extension BusStopsViewController: MKMapViewDelegate {
+extension BusStopsViewController {
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         guard !(annotation is MKUserLocation) else { return nil }
+        
         
         let identifier = "busStop"
         var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier)
@@ -99,11 +100,25 @@ extension BusStopsViewController: MKMapViewDelegate {
         if annotationView == nil {
             annotationView = BusStopAnnotationView(annotation: annotation, reuseIdentifier: identifier)
             annotationView?.canShowCallout = true
+            let button = UIButton(type: .detailDisclosure)
+            annotationView?.rightCalloutAccessoryView = button
         } else {
             annotationView?.annotation = annotation
         }
         
+        
         return annotationView
+    }
+    
+    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
+        guard let annotation = view.annotation as? MKPointAnnotation else { return }
+            
+            let placemark = MKPlacemark(coordinate: annotation.coordinate)
+            let mapItem = MKMapItem(placemark: placemark)
+            mapItem.name = annotation.title
+            
+            let launchOptions = [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeDriving]
+            mapItem.openInMaps(launchOptions: launchOptions)
     }
 }
 

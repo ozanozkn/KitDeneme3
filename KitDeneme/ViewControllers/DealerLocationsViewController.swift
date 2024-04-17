@@ -104,10 +104,23 @@ extension DealerLocationsViewController: MKMapViewDelegate {
         } else {
             annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: identifier)
             annotationView.canShowCallout = true
-            annotationView.image = UIImage(named: "dealer") // Set custom image for the annotation view
+            annotationView.image = UIImage(named: "dealer")
+            let button = UIButton(type: .detailDisclosure)
+            annotationView.rightCalloutAccessoryView = button
         }
         
         return annotationView
+    }
+    
+    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
+        guard let annotation = view.annotation as? MKPointAnnotation else { return }
+            
+            let placemark = MKPlacemark(coordinate: annotation.coordinate)
+            let mapItem = MKMapItem(placemark: placemark)
+            mapItem.name = annotation.title
+            
+            let launchOptions = [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeDriving]
+            mapItem.openInMaps(launchOptions: launchOptions)
     }
 }
 

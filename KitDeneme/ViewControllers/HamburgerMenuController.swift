@@ -81,6 +81,8 @@ class HamburgerMenuController: UIViewController, UITableViewDelegate, UITableVie
             
         case 3:
             // Navigate to User's Balance view
+//            let userBalanceViewController = UserBalanceViewController()
+//            navigationController?.pushViewController(userBalanceViewController, animated: true)
             break
             
         case 4:

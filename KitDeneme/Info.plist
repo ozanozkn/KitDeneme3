@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>location</string>
+	<string>Your location is used to show your position on the map, get directions, and improve search results.</string>
 	<key>NSLocationAlwaysUsageDescription</key>
-	<string>location</string>
+	<string>Your location is used to show your position on the map, get directions, and improve search results.</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
