@@ -81,8 +81,8 @@ class HamburgerMenuController: UIViewController, UITableViewDelegate, UITableVie
             
         case 3:
             // Navigate to User's Balance view
-//            let userBalanceViewController = UserBalanceViewController()
-//            navigationController?.pushViewController(userBalanceViewController, animated: true)
+            let userBalanceViewController = UserBalanceViewController()
+            navigationController?.pushViewController(userBalanceViewController, animated: true)
             break
             
         case 4:
@@ -106,17 +106,35 @@ class HamburgerMenuController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     private func shareApp() {
+        let shareText = "Check out this app!"
+        if let link = URL(string: "https://example.com") {
+            let objectsToShare: [Any] = [shareText, link]
+            let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
+            activityVC.excludedActivityTypes = [.airDrop, .addToReadingList]
             
-            
-            let shareText = "check this app!"
-            if let link = NSURL(string: "https://example.com") {
-                
-                let objectsToShare = [shareText,link] as [Any]
-                let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
-                activityVC.excludedActivityTypes = [UIActivity.ActivityType.airDrop, UIActivity.ActivityType.addToReadingList]
-                self.present(activityVC, animated: true, completion: nil)
-                
+            // Customize completion handler to handle specific activities
+            activityVC.completionWithItemsHandler = { activityType, completed, returnedItems, error in
+                if let activityType = activityType {
+                    if activityType == UIActivity.ActivityType.message {
+                        // The user selected Messages app
+                        let messageBody = shareText // Use shareText directly
+                        
+                        // Create message URL with the message body
+                        let messageURL = URL(string: "sms:&body=\(messageBody.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!)")
+                        
+                        
+                        if let url = messageURL {
+                            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                        }
+                    }
+                }
             }
+            
+            // Present the activity view controller
+            present(activityVC, animated: true, completion: nil)
         }
+    }
+
+
 
 }

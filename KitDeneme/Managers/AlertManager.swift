@@ -108,3 +108,9 @@ extension AlertManager {
     }
 }
 
+extension AlertManager {
+    public static func alertWIP(on vc: UIViewController) {
+        showBasicAlert(on: vc, title: "WIP", message: "This function is currently in work in progress.")
+    }
+}
+

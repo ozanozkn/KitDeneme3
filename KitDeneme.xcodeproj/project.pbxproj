@@ -67,6 +67,7 @@
 		F6AF30DF2BAC3F7300E06AB3 /* DealerLocationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6AF30DE2BAC3F7300E06AB3 /* DealerLocationsViewController.swift */; };
 		F6AF30E12BAC47A200E06AB3 /* BusLocationsResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6AF30E02BAC47A200E06AB3 /* BusLocationsResponseModel.swift */; };
 		F6AF30E32BAC47CC00E06AB3 /* BusLocationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6AF30E22BAC47CB00E06AB3 /* BusLocationsViewController.swift */; };
+		F6B6C6442BCFB7CE00071948 /* UserBalanceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B6C6432BCFB7CE00071948 /* UserBalanceViewController.swift */; };
 		F6FD93AE2B9A09660075EB99 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6FD93AD2B9A09660075EB99 /* AppDelegate.swift */; };
 		F6FD93B02B9A09660075EB99 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6FD93AF2B9A09660075EB99 /* SceneDelegate.swift */; };
 		F6FD93B72B9A09690075EB99 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F6FD93B62B9A09690075EB99 /* Assets.xcassets */; };
@@ -104,6 +105,7 @@
 		F6AF30DE2BAC3F7300E06AB3 /* DealerLocationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealerLocationsViewController.swift; sourceTree = "<group>"; };
 		F6AF30E02BAC47A200E06AB3 /* BusLocationsResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusLocationsResponseModel.swift; sourceTree = "<group>"; };
 		F6AF30E22BAC47CB00E06AB3 /* BusLocationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusLocationsViewController.swift; sourceTree = "<group>"; };
+		F6B6C6432BCFB7CE00071948 /* UserBalanceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserBalanceViewController.swift; sourceTree = "<group>"; };
 		F6FD93AA2B9A09660075EB99 /* KitDeneme.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KitDeneme.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F6FD93AD2B9A09660075EB99 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F6FD93AF2B9A09660075EB99 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -190,6 +192,7 @@
 				F6AF30E22BAC47CB00E06AB3 /* BusLocationsViewController.swift */,
 				F68328192BB3F61C001BF44B /* ChangePasswordController.swift */,
 				F683281B2BB40D0E001BF44B /* DeleteAccountController.swift */,
+				F6B6C6432BCFB7CE00071948 /* UserBalanceViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -409,6 +412,7 @@
 				F6FD93AE2B9A09660075EB99 /* AppDelegate.swift in Sources */,
 				F660FE6C2B9B04A2001DCA0A /* CustomTextField.swift in Sources */,
 				F6AF30DF2BAC3F7300E06AB3 /* DealerLocationsViewController.swift in Sources */,
+				F6B6C6442BCFB7CE00071948 /* UserBalanceViewController.swift in Sources */,
 				F660FE882BA17DB2001DCA0A /* RegisterUserRequest.swift in Sources */,
 				F660FE1F2B9AEEAD001DCA0A /* LoginController.swift in Sources */,
 				F6FD93B02B9A09660075EB99 /* SceneDelegate.swift in Sources */,
