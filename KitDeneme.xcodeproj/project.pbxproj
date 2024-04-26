@@ -56,8 +56,6 @@
 		F68329422BBD77FE001BF44B /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = F68329412BBD77FE001BF44B /* FirebaseStorage */; };
 		F68329442BBD77FE001BF44B /* FirebaseStorageCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = F68329432BBD77FE001BF44B /* FirebaseStorageCombine-Community */; };
 		F68329472BBD780C001BF44B /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = F68329462BBD780C001BF44B /* SwiftyJSON */; };
-		F68329492BBD781E001BF44B /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = F68329482BBD781E001BF44B /* Alamofire */; };
-		F683294B2BBD781E001BF44B /* AlamofireDynamic in Frameworks */ = {isa = PBXBuildFile; productRef = F683294A2BBD781E001BF44B /* AlamofireDynamic */; };
 		F694AE222BA3155E00022953 /* ConnectivityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F694AE212BA3155E00022953 /* ConnectivityManager.swift */; };
 		F694AE682BAAD2CF00022953 /* HamburgerMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F694AE672BAAD2CF00022953 /* HamburgerMenuController.swift */; };
 		F694AE6A2BAAD68D00022953 /* UserSettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F694AE692BAAD68D00022953 /* UserSettingsController.swift */; };
@@ -68,6 +66,8 @@
 		F6AF30E12BAC47A200E06AB3 /* BusLocationsResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6AF30E02BAC47A200E06AB3 /* BusLocationsResponseModel.swift */; };
 		F6AF30E32BAC47CC00E06AB3 /* BusLocationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6AF30E22BAC47CB00E06AB3 /* BusLocationsViewController.swift */; };
 		F6B6C6442BCFB7CE00071948 /* UserBalanceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B6C6432BCFB7CE00071948 /* UserBalanceViewController.swift */; };
+		F6C0AF662BD8E550009F9B35 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = F6C0AF652BD8E550009F9B35 /* Alamofire */; };
+		F6C0AF682BD8E550009F9B35 /* AlamofireDynamic in Frameworks */ = {isa = PBXBuildFile; productRef = F6C0AF672BD8E550009F9B35 /* AlamofireDynamic */; };
 		F6FD93AE2B9A09660075EB99 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6FD93AD2B9A09660075EB99 /* AppDelegate.swift */; };
 		F6FD93B02B9A09660075EB99 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6FD93AF2B9A09660075EB99 /* SceneDelegate.swift */; };
 		F6FD93B72B9A09690075EB99 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F6FD93B62B9A09690075EB99 /* Assets.xcassets */; };
@@ -126,7 +126,7 @@
 				F68329102BBD77FE001BF44B /* FirebaseAnalytics in Frameworks */,
 				F68329122BBD77FE001BF44B /* FirebaseAnalyticsOnDeviceConversion in Frameworks */,
 				F68329382BBD77FE001BF44B /* FirebaseMLModelDownloader in Frameworks */,
-				F683294B2BBD781E001BF44B /* AlamofireDynamic in Frameworks */,
+				F6C0AF682BD8E550009F9B35 /* AlamofireDynamic in Frameworks */,
 				F683292C2BBD77FE001BF44B /* FirebaseFirestoreSwift in Frameworks */,
 				F68329182BBD77FE001BF44B /* FirebaseAppCheck in Frameworks */,
 				F68329162BBD77FE001BF44B /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */,
@@ -141,7 +141,7 @@
 				F683291A2BBD77FE001BF44B /* FirebaseAppDistribution-Beta in Frameworks */,
 				F683291E2BBD77FE001BF44B /* FirebaseAuthCombine-Community in Frameworks */,
 				F683293C2BBD77FE001BF44B /* FirebasePerformance in Frameworks */,
-				F68329492BBD781E001BF44B /* Alamofire in Frameworks */,
+				F6C0AF662BD8E550009F9B35 /* Alamofire in Frameworks */,
 				F68329342BBD77FE001BF44B /* FirebaseInAppMessagingSwift-Beta in Frameworks */,
 				F68329472BBD780C001BF44B /* SwiftyJSON in Frameworks */,
 				F68329422BBD77FE001BF44B /* FirebaseStorage in Frameworks */,
@@ -167,7 +167,7 @@
 			path = Supporting;
 			sourceTree = "<group>";
 		};
-		F660FE262B9AEF6F001DCA0A /* Views */ = {
+		F660FE262B9AEF6F001DCA0A /* CustomViews */ = {
 			isa = PBXGroup;
 			children = (
 				F660FE272B9AF09B001DCA0A /* AuthHeaderView.swift */,
@@ -175,7 +175,7 @@
 				F660FE6D2B9B096D001DCA0A /* CustomButton.swift */,
 				F68328262BB57D7C001BF44B /* CustomFrame.swift */,
 			);
-			path = Views;
+			path = CustomViews;
 			sourceTree = "<group>";
 		};
 		F660FE712B9B4F03001DCA0A /* ViewControllers */ = {
@@ -270,7 +270,7 @@
 				F660FE862BA17D74001DCA0A /* Models */,
 				F68328212BB54DA0001BF44B /* ViewModels */,
 				F660FE712B9B4F03001DCA0A /* ViewControllers */,
-				F660FE262B9AEF6F001DCA0A /* Views */,
+				F660FE262B9AEF6F001DCA0A /* CustomViews */,
 				F660FE1B2B9AEDD3001DCA0A /* Supporting */,
 				F6FD93BB2B9A09690075EB99 /* Info.plist */,
 				F660FE6F2B9B2A18001DCA0A /* WebViewerController.swift */,
@@ -323,8 +323,8 @@
 				F68329412BBD77FE001BF44B /* FirebaseStorage */,
 				F68329432BBD77FE001BF44B /* FirebaseStorageCombine-Community */,
 				F68329462BBD780C001BF44B /* SwiftyJSON */,
-				F68329482BBD781E001BF44B /* Alamofire */,
-				F683294A2BBD781E001BF44B /* AlamofireDynamic */,
+				F6C0AF652BD8E550009F9B35 /* Alamofire */,
+				F6C0AF672BD8E550009F9B35 /* AlamofireDynamic */,
 			);
 			productName = KitDeneme;
 			productReference = F6FD93AA2B9A09660075EB99 /* KitDeneme.app */;
@@ -355,9 +355,9 @@
 			);
 			mainGroup = F6FD93A12B9A09660075EB99;
 			packageReferences = (
-				F694AE232BA48F9B00022953 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				F694AE282BA48FDF00022953 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				F68329452BBD780C001BF44B /* XCRemoteSwiftPackageReference "SwiftyJSON" */,
+				F6C0AF642BD8E550009F9B35 /* XCRemoteSwiftPackageReference "Alamofire" */,
 			);
 			productRefGroup = F6FD93AB2B9A09660075EB99 /* Products */;
 			projectDirPath = "";
@@ -561,7 +561,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 38CQTL66U5;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = KitDeneme/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -588,7 +588,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 38CQTL66U5;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = KitDeneme/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -640,20 +640,20 @@
 				minimumVersion = 5.0.2;
 			};
 		};
-		F694AE232BA48F9B00022953 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/Alamofire/Alamofire";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 5.9.0;
-			};
-		};
 		F694AE282BA48FDF00022953 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 10.22.1;
+			};
+		};
+		F6C0AF642BD8E550009F9B35 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.9.1;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
@@ -799,14 +799,14 @@
 			package = F68329452BBD780C001BF44B /* XCRemoteSwiftPackageReference "SwiftyJSON" */;
 			productName = SwiftyJSON;
 		};
-		F68329482BBD781E001BF44B /* Alamofire */ = {
+		F6C0AF652BD8E550009F9B35 /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = F694AE232BA48F9B00022953 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			package = F6C0AF642BD8E550009F9B35 /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
 		};
-		F683294A2BBD781E001BF44B /* AlamofireDynamic */ = {
+		F6C0AF672BD8E550009F9B35 /* AlamofireDynamic */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = F694AE232BA48F9B00022953 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			package = F6C0AF642BD8E550009F9B35 /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = AlamofireDynamic;
 		};
 /* End XCSwiftPackageProductDependency section */

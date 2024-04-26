@@ -35,9 +35,15 @@ class BusLocationsViewController: UIViewController {
         startTimer()
     }
     
-    deinit {
-        stopTimer() // Invalidate the timer when the view controller is deallocated
-    }
+    override func viewWillDisappear(_ animated: Bool) {
+            super.viewWillDisappear(animated)
+            stopTimer()
+            stopLocationUpdates()
+        }
+    
+//    deinit {
+//        stopTimer() // Invalidate the timer when the view controller is deallocated
+//    }
     
     // MARK: - UI Setup
     
@@ -76,6 +82,10 @@ class BusLocationsViewController: UIViewController {
     @objc private func updateBusLocations() {
         viewModel.fetchLiveBusLocations() // Fetch live bus locations periodically
     }
+    
+    private func stopLocationUpdates() {
+            locationManager.stopUpdatingLocation()
+        }
 }
 
 // MARK: - CLLocationManagerDelegate

@@ -129,7 +129,7 @@ class AuthService {
         
         
         db.collection("users").document(userUID).delete { error in
-            if let error = error {
+            if error != nil {
                 print("error removing doc")
             } else {
                 print("doc removed")

@@ -25,10 +25,10 @@ class UserSettingsController: UIViewController {
         
         logoutButton.setTitle("Logout", for: .normal)
         logoutButton.setTitleColor(.red, for: .normal)
-        logoutButton.backgroundColor = .white
-        logoutButton.layer.cornerRadius = 8
-        logoutButton.layer.borderWidth = 1
-        logoutButton.layer.borderColor = UIColor.white.cgColor
+//        logoutButton.backgroundColor = .white
+//        logoutButton.layer.cornerRadius = 8
+//        logoutButton.layer.borderWidth = 1
+//        logoutButton.layer.borderColor = UIColor.white.cgColor
         logoutButton.addTarget(self, action: #selector(didTapLogout), for: .touchUpInside)
         view.addSubview(logoutButton)
         
@@ -43,10 +43,10 @@ class UserSettingsController: UIViewController {
             
             changePasswordButton.setTitle("Change Password", for: .normal)
             changePasswordButton.setTitleColor(.systemBlue, for: .normal)
-            changePasswordButton.backgroundColor = .white
-            changePasswordButton.layer.cornerRadius = 8
-            changePasswordButton.layer.borderWidth = 1
-            changePasswordButton.layer.borderColor = UIColor.white.cgColor
+//            changePasswordButton.backgroundColor = .white
+//            changePasswordButton.layer.cornerRadius = 8
+//            changePasswordButton.layer.borderWidth = 1
+//            changePasswordButton.layer.borderColor = UIColor.white.cgColor
             changePasswordButton.addTarget(self, action: #selector(didTapChangePassword), for: .touchUpInside)
             view.addSubview(changePasswordButton)
             
@@ -60,10 +60,6 @@ class UserSettingsController: UIViewController {
     private func setupDeleteAccountButton() {
             deleteAccountButton.setTitle("Delete Account", for: .normal)
             deleteAccountButton.setTitleColor(.red, for: .normal)
-            deleteAccountButton.backgroundColor = .white
-            deleteAccountButton.layer.cornerRadius = 8
-            deleteAccountButton.layer.borderWidth = 1
-            deleteAccountButton.layer.borderColor = UIColor.white.cgColor
             deleteAccountButton.addTarget(self, action: #selector(didTapDeleteAccount), for: .touchUpInside)
             view.addSubview(deleteAccountButton)
             

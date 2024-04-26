@@ -14,7 +14,7 @@ protocol BusLocationsViewModelDelegate: AnyObject {
 
 class BusLocationsViewModel {
     weak var delegate: BusLocationsViewModelDelegate?
-
+    private var dataTask: URLSessionDataTask?
     func fetchLiveBusLocations() {
         let endpoint = "https://tfe-opendata.com/api/v1/vehicle_locations"
         
@@ -23,7 +23,8 @@ class BusLocationsViewModel {
             return
         }
         
-        let task = URLSession.shared.dataTask(with: url) { [weak self] data, response, error in
+        
+        dataTask = URLSession.shared.dataTask(with: url) { [weak self] data, response, error in
             guard let self = self else { return }
             
             if let error = error {
@@ -45,6 +46,16 @@ class BusLocationsViewModel {
             }
         }
         
-        task.resume()
+        dataTask?.resume()
+        
+        
+    }
+    
+    deinit {
+        print("BusLocationsViewModel deallocated")
+        
+        dataTask?.cancel() // Cancel the data task when the view model is deallocated
+        delegate = nil
+        
     }
 }

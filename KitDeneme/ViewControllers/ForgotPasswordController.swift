@@ -42,7 +42,7 @@ class ForgotPasswordController: UIViewController {
     
     // MARK: - UI Setup
     private func setupUI() {
-        self.view.backgroundColor = .systemBackground
+        self.view.backgroundColor = .white
         
         self.view.addSubview(headerView)
         self.view.addSubview(emailField)

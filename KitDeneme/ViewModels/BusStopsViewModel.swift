@@ -33,4 +33,11 @@ class BusStopsViewModel {
             delegate?.didFailLoadingBusStopsData(error)
         }
     }
+    
+    deinit {
+        delegate = nil
+        
+        print("DEBUG PRINT:", "delegate nil")
+        
+    }
 }
