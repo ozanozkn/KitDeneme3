@@ -12,11 +12,11 @@ class ForgotPasswordController: UIViewController {
         
     
     // MARK: UI Components
-    private let headerView = AuthHeaderView(title: "Forgot Password", subTitle: "Reset your password")
+    private let headerView = AuthHeaderView(title: String(localized: "Forgot Password", table: "Localizable"), subTitle: String(localized: "Reset your password", table: "Localizable"))
     
     private let emailField = CustomTextField(fieldType: .email)
     
-    private let resetPasswordButton = CustomButton(title: "Submit", hasBackground: true, fontSize: .big)
+    private let resetPasswordButton = CustomButton(title: String(localized: "Submit", table: "Localizable"), hasBackground: true, fontSize: .big)
 
     
     // MARK: LifeCycle

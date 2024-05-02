@@ -4,30 +4,30 @@ import FirebaseAuth
 class ChangePasswordController: UIViewController {
     
     // MARK: - Properties
-    private let headerView = AuthHeaderView(title: "Change Password", subTitle: "Change your password")
+    private let headerView = AuthHeaderView(title: String(localized: "Change Password", table: "Localizable"), subTitle: String(localized: "Change your password", table: "Localizable"))
     
     private let currentPasswordField: CustomTextField = {
         let textField = CustomTextField(fieldType: .password)
-        textField.placeholder = "Current Password"
+        textField.placeholder = String(localized: "Current Password", table: "Localizable")
         return textField
         
     }()
         
     private let newPasswordField: CustomTextField = {
         let textField = CustomTextField(fieldType: .password)
-        textField.placeholder = "New Password"
+        textField.placeholder = String(localized: "New Password", table: "Localizable")
         return textField
         
     }()
     
     private let newPasswordAgainField: CustomTextField = {
         let textField = CustomTextField(fieldType: .password)
-        textField.placeholder = "New Password Again"
+        textField.placeholder = String(localized: "New Password Again", table: "Localizable")
         return textField
     }()
         
     private let changePasswordButton: CustomButton = {
-        let button = CustomButton(title: "Change Password", hasBackground: true, fontSize: .medium)
+        let button = CustomButton(title: String(localized: "Change Password", table: "Localizable"), hasBackground: true, fontSize: .medium)
         button.addTarget(self, action: #selector(didTapChangePassword), for: .touchUpInside)
         return button
         
@@ -97,24 +97,24 @@ class ChangePasswordController: UIViewController {
         guard let currentPassword = currentPasswordField.text, !currentPassword.isEmpty,
                 let newPassword = newPasswordField.text, !newPassword.isEmpty,
                 let newPasswordAgain = newPasswordAgainField.text, !newPasswordAgain.isEmpty else {
-            showAlert(message: "Please fill in all fields.")
+            showAlert(message: String(localized: "Please fill in all fields.", table: "Localizable"))
             return
                
         }
         
         if !Validator.isPasswordValid(for: newPassword) {
-            showAlert(message: "Please enter a valid password")
+            showAlert(message: String(localized: "Please enter a valid password", table: "Localizable"))
             return
         }
         
         if newPassword != newPasswordAgain {
-            showAlert(message: "New password fields must match.")
+            showAlert(message: String(localized: "New password fields must match." ,table: "Localizable"))
             return
         }
         
         // Retrieve user's current password from Firebase
         guard let user = Auth.auth().currentUser else {
-            showAlert(message: "User not authenticated.")
+            showAlert(message: String(localized: "User not authenticated.", table: "Localizable"))
             return
         }
         
@@ -122,7 +122,7 @@ class ChangePasswordController: UIViewController {
             guard let self = self else { return }
             if error != nil {
                 // Show an alert if reauthentication fails
-                self.showAlert(message: "Error changing password, please fill the fields correctly")
+                self.showAlert(message: String(localized: "Error changing password, please fill the fields correctly", table: "Localizable"))
                 return
             }
             
@@ -133,7 +133,7 @@ class ChangePasswordController: UIViewController {
                     self.showAlert(message: "Failed to change password: \(error.localizedDescription)")
                 } else {
                     // Password changed successfully
-                    self.showAlertWithCompletion(message: "Password changed successfully.") {
+                    self.showAlertWithCompletion(message: String(localized: "Password changed successfully.", table: "Localizable")) {
                         if let sceneDelegate = self.view.window?.windowScene?.delegate as? SceneDelegate {
                             sceneDelegate.checkAuthentication()
                         }
@@ -152,13 +152,13 @@ class ChangePasswordController: UIViewController {
     
     private func showAlert(message: String) {
         let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        alert.addAction(UIAlertAction(title: String(localized: "OK", table: "Localizable"), style: .default, handler: nil))
         present(alert, animated: true, completion: nil)
     }
     
     private func showAlertWithCompletion(message: String, completion: (() -> Void)?) {
         let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default) { _ in
+        alert.addAction(UIAlertAction(title: String(localized: "OK", table: "Localizable"), style: .default) { _ in
             completion?()
         })
         present(alert, animated: true, completion: nil)

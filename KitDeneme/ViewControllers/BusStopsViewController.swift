@@ -30,7 +30,7 @@ class BusStopsViewController: UIViewController, MKMapViewDelegate {
     
     private func setupUI() {
         view.backgroundColor = .white
-        title = "Bus Stops"
+        title = String(localized: "Bus Stops", table: "Localizable")
         
         mapView.delegate = self
         

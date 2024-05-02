@@ -10,7 +10,7 @@ import FirebaseAuth
 
 class UserBalanceViewController: UIViewController {
 
-    private let headerView = AuthHeaderView(title: "Balance", subTitle: "See balance / Scan card")
+    private let headerView = AuthHeaderView(title: String(localized: "Balance", table: "Localizable"), subTitle: String(localized: "See balance / Scan card", table: "Localizable"))
     
     private let userBalanceTextField: CustomTextField = {
         let textField = CustomTextField(fieldType: .username)
@@ -23,7 +23,7 @@ class UserBalanceViewController: UIViewController {
     }()
     
     private let scanCardButton: CustomButton = {
-        let button = CustomButton(title: "Scan Card", hasBackground: true, fontSize: .medium)
+        let button = CustomButton(title: String(localized: "Scan Card", table: "Localizable"), hasBackground: true, fontSize: .medium)
         button.addTarget(self, action: #selector(didTapScanCard), for: .touchUpInside)
         return button
     }()
@@ -75,7 +75,8 @@ class UserBalanceViewController: UIViewController {
             
             if let user = user {
                 DispatchQueue.main.async {
-                    self.userBalanceTextField.text = "Wallet: \(user.balance)₺"
+                    self.userBalanceTextField.text = String(localized: "Wallet: ", table: "Localizable")
+                    self.userBalanceTextField.text! += "₺\(user.balance)"
                 }
             }
         }

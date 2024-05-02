@@ -2,21 +2,21 @@ import UIKit
 
 class RegisterController: UIViewController {
     
-    private let headerView = AuthHeaderView(title: "Sign Up", subTitle: "Create your account")
+    private let headerView = AuthHeaderView(title: String(localized: "Sign Up", table: "Localizable"), subTitle: String(localized: "Create your account", table: "Localizable"))
     
     private let usernameField = CustomTextField(fieldType: .username)
     private let emailField = CustomTextField(fieldType: .email)
     private let passwordField = CustomTextField(fieldType: .password)
     
-    private let signUpButton = CustomButton(title: "Sign Up", hasBackground: true, fontSize: .big)
-    private let signInButton = CustomButton(title: "Already have an account? Sign In.", fontSize: .medium)
+    private let signUpButton = CustomButton(title: String(localized: "Sign Up", table: "Localizable"), hasBackground: true, fontSize: .big)
+    private let signInButton = CustomButton(title: String(localized: "Already have an account? Sign In.", table: "Localizable"), fontSize: .medium)
     
     private let termsTextView: UITextView = {
-            let attributedString = NSMutableAttributedString(string: "By creating an account, you agree to our Terms & Conditions and you acknowledge that you have read our Privacy Policy.")
+            let attributedString = NSMutableAttributedString(string: String(localized: "By creating an account, you agree to our Terms & Conditions and you acknowledge that you have read our Privacy Policy.", table: "Localizable"))
             
-            attributedString.addAttribute(.link, value: "terms://termsAndConditions", range: (attributedString.string as NSString).range(of: "Terms & Conditions"))
+        attributedString.addAttribute(.link, value: "terms://termsAndConditions", range: (attributedString.string as NSString).range(of: String(localized: "Terms & Conditions", table: "Localizable")))
             
-            attributedString.addAttribute(.link, value: "privacy://privacyPolicy", range: (attributedString.string as NSString).range(of: "Privacy Policy"))
+        attributedString.addAttribute(.link, value: "privacy://privacyPolicy", range: (attributedString.string as NSString).range(of: String(localized: "Privacy Policy", table: "Localizable")))
             
             let tv = UITextView()
             tv.linkTextAttributes = [.foregroundColor: UIColor.systemBlue]
@@ -152,8 +152,8 @@ extension RegisterController: RegisterViewModelDelegate {
 
     func registrationDidSucceed() {
         DispatchQueue.main.async {
-            let alert = UIAlertController(title: "Email Verification", message: "Verification mail sent, please verify your email address", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "OK", style: .default) { _ in
+            let alert = UIAlertController(title: String(localized: "Email Verification", table: "Localizable"), message: String(localized: "Verification mail sent, please verify your email address", table: "Localizable"), preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: String(localized: "OK", table: "Localizable"), style: .default) { _ in
                 self.navigationController?.popToRootViewController(animated: true)
             })
             self.present(alert, animated: true, completion: nil)
@@ -162,7 +162,7 @@ extension RegisterController: RegisterViewModelDelegate {
 
     func registrationDidFail(with error: Error) {
         DispatchQueue.main.async {
-            let alert = UIAlertController(title: "Registration Error", message: "Failed to register. Please try again later.", preferredStyle: .alert)
+            let alert = UIAlertController(title: String(localized: "Registration Error", table: "Localizable"), message: String(localized: "Failed to register. Please try again later.", table: "Localizable"), preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
             self.present(alert, animated: true, completion: nil)
         }

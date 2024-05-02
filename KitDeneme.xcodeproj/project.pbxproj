@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F63096172BDB91AC00B24F86 /* ChangeLanguageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63096162BDB91AC00B24F86 /* ChangeLanguageViewController.swift */; };
+		F630961C2BE366BC00B24F86 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F630961A2BE366BC00B24F86 /* Localizable.strings */; };
+		F630961F2BE3A8A800B24F86 /* Bundle+Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = F630961E2BE3A8A800B24F86 /* Bundle+Localization.swift */; };
 		F660FE1F2B9AEEAD001DCA0A /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F660FE1E2B9AEEAD001DCA0A /* LoginController.swift */; };
 		F660FE212B9AEED1001DCA0A /* ForgotPasswordController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F660FE202B9AEED1001DCA0A /* ForgotPasswordController.swift */; };
 		F660FE232B9AEEFE001DCA0A /* RegisterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F660FE222B9AEEFE001DCA0A /* RegisterController.swift */; };
@@ -75,6 +78,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F63096162BDB91AC00B24F86 /* ChangeLanguageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeLanguageViewController.swift; sourceTree = "<group>"; };
+		F63096182BE3660600B24F86 /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = tr; path = tr.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		F630961B2BE366BC00B24F86 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		F630961D2BE366D500B24F86 /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = tr; path = tr.lproj/Localizable.strings; sourceTree = "<group>"; };
+		F630961E2BE3A8A800B24F86 /* Bundle+Localization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+Localization.swift"; sourceTree = "<group>"; };
 		F660FE1E2B9AEEAD001DCA0A /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		F660FE202B9AEED1001DCA0A /* ForgotPasswordController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordController.swift; sourceTree = "<group>"; };
 		F660FE222B9AEEFE001DCA0A /* RegisterController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterController.swift; sourceTree = "<group>"; };
@@ -155,6 +163,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F63096192BE3663200B24F86 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				F630961A2BE366BC00B24F86 /* Localizable.strings */,
+				F630961E2BE3A8A800B24F86 /* Bundle+Localization.swift */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		F660FE1B2B9AEDD3001DCA0A /* Supporting */ = {
 			isa = PBXGroup;
 			children = (
@@ -193,6 +210,7 @@
 				F68328192BB3F61C001BF44B /* ChangePasswordController.swift */,
 				F683281B2BB40D0E001BF44B /* DeleteAccountController.swift */,
 				F6B6C6432BCFB7CE00071948 /* UserBalanceViewController.swift */,
+				F63096162BDB91AC00B24F86 /* ChangeLanguageViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -274,6 +292,7 @@
 				F660FE1B2B9AEDD3001DCA0A /* Supporting */,
 				F6FD93BB2B9A09690075EB99 /* Info.plist */,
 				F660FE6F2B9B2A18001DCA0A /* WebViewerController.swift */,
+				F63096192BE3663200B24F86 /* Resources */,
 			);
 			path = KitDeneme;
 			sourceTree = "<group>";
@@ -352,6 +371,7 @@
 			knownRegions = (
 				en,
 				Base,
+				tr,
 			);
 			mainGroup = F6FD93A12B9A09660075EB99;
 			packageReferences = (
@@ -373,6 +393,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F630961C2BE366BC00B24F86 /* Localizable.strings in Resources */,
 				F6FD93BA2B9A09690075EB99 /* LaunchScreen.storyboard in Resources */,
 				F694AE742BAB1A9400022953 /* bus_stops.json in Resources */,
 				F6FD93B72B9A09690075EB99 /* Assets.xcassets in Resources */,
@@ -400,6 +421,7 @@
 				F683281C2BB40D0E001BF44B /* DeleteAccountController.swift in Sources */,
 				F6808B902BA1CF39006ED402 /* User.swift in Sources */,
 				F660FE932BA18620001DCA0A /* LoginUserRequest.swift in Sources */,
+				F630961F2BE3A8A800B24F86 /* Bundle+Localization.swift in Sources */,
 				F68328232BB54DB2001BF44B /* BusStopsViewModel.swift in Sources */,
 				F694AE682BAAD2CF00022953 /* HamburgerMenuController.swift in Sources */,
 				F660FE6E2B9B096D001DCA0A /* CustomButton.swift in Sources */,
@@ -417,6 +439,7 @@
 				F660FE1F2B9AEEAD001DCA0A /* LoginController.swift in Sources */,
 				F6FD93B02B9A09660075EB99 /* SceneDelegate.swift in Sources */,
 				F660FE702B9B2A18001DCA0A /* WebViewerController.swift in Sources */,
+				F63096172BDB91AC00B24F86 /* ChangeLanguageViewController.swift in Sources */,
 				F660FE282B9AF09B001DCA0A /* AuthHeaderView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -424,10 +447,20 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		F630961A2BE366BC00B24F86 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F630961B2BE366BC00B24F86 /* en */,
+				F630961D2BE366D500B24F86 /* tr */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		F6FD93B82B9A09690075EB99 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				F6FD93B92B9A09690075EB99 /* Base */,
+				F63096182BE3660600B24F86 /* tr */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -440,6 +473,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -503,6 +537,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";

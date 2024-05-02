@@ -28,7 +28,7 @@ class DealerLocationsViewController: UIViewController {
     
     private func setupUI() {
         view.backgroundColor = .white
-        title = "Dealer Locations"
+        title = String(localized: "Dealer Locations", table: "Localizable")
         mapView.delegate = self
 
         view.addSubview(mapView)

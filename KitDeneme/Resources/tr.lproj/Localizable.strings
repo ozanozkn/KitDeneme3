@@ -1,0 +1,142 @@
+/* 
+  Localizable.strings
+  KitDeneme
+
+  Created by Ozan Özkan on 2.05.2024.
+  
+*/
+// Ana Sayfa
+"Hello" = "Merhaba";
+
+//Menu
+"Bus Locations" = "Otobüsler";
+"Bus Stops" = "Duraklar";
+"Dealers Locations" = "Bayiler";
+"User's Balance" = "Cüzdan";
+"User Settings" = "Ayarlar";
+"Share App" = "Uygulamayı Paylaş";
+"Change Language" = "Dil Değiştir";
+
+// Ayarlar
+"Logout" = "Çıkış Yap";
+"Change Password" = "Şifre Değiştir";
+"Delete Account" = "Hesabı Sil";
+
+//Giriş yap
+"Sign In" = "Giriş Yap";
+"Sign in to your account" = "Hesabına giriş yap";
+"Forgot Password?" = "Şifremi Unuttum";
+"New User? Create Account." = "Yeni Hesap Oluştur";
+"Username" = "Kullanıcı Adı";
+"Email" = "E-Posta";
+"Password" = "Şifre";
+"Verification Required" = "Onay Gerekli";
+"Please verify your email to use the application, verification link has been sent to your email address." =
+"Lütfen kaydolduğunuz e-postayı, e-posta adresinize gönderilen linkten onaylayın.";
+"OK" = "Tamam";
+
+//Kaydol
+"Sign Up" = "Kaydol";
+"Already have an account? Sign In." = "Hesabım var, giriş yap.";
+
+"By creating an account, you agree to our Terms & Conditions and you acknowledge that you have read our Privacy Policy." =
+"Bir hesap oluşturarak Kullanım Koşullarımızı ve Gizlilik Politikamızı okuduğunuzu kabul etmiş olursunuz.";
+
+"Terms & Conditions" = "Kullanım Koşullarımızı";
+"Privacy Policy" = "Gizlilik Politikamızı";
+"Create your account" = "Hesabını oluştur";
+
+"Email Verification" = "E-Posta Onay";
+"Verification mail sent, please verify your email address" =
+"E-Posta onay linki adresinize gönderildi, lütfen linki takip ederek e-posta adresinizi onaylayın";
+
+"Registration Error" = "Kaydolma Hatası";
+"Failed to register. Please try again later." = "Kaydolurken hata oluştu. Lütfen daha sonra tekrar deneyin.";
+
+//Hesap Sil
+"Enter your password to delete the account" = "Hesabı silmek için şifrenizi girin";
+"Please enter your password" = "Lütfen şifrenizi girin";
+"Confirmation" = "Onay";
+"Are you sure you want to delete your account?" = "Hesabı silmek istediğinize emin misiniz?";
+"Yes" = "Evet";
+"No" = "Hayır";
+"Account deleted successfully." = "Hesap başarıyla silindi.";
+
+// Şire Reset
+"Forgot Password" = "Şifremi Unuttum";
+"Reset your password" = "Şifrenizi yenileyin";
+"Submit" = "Gönder";
+
+// Şifre Değiştir
+"Change Password" = "Şifre Değiştir";
+"Change your password" = "Şifrenizi değiştirin";
+"Current Password" = "Mevcut Şifre";
+"New Password" = "Yeni Şifre";
+"New Password Again" = "Yeni Şifre Tekrar";
+"Please fill in all fields." = "Lütfen tüm alanları doldurun.";
+"Please enter a valid password" = "Lütfen geçerli bir şifre girin";
+"New password fields must match." = "Yeni şifre alanları eşleşmeli";
+"User not authenticated." = "Kullancı yetkilendirilemedi.";
+"Error changing password, please fill the fields correctly" = "Şifre değiştirilemedi, lütfen doldurduğunuz alanları kontrol edin";
+"Password changed successfully." = "Şifre başarıyla değiştirildi";
+
+// Dil Değiştir
+"Save" = "Kaydet";
+"Change Language" = "Dil Değiştir";
+"Change to your desired language" = "Kullanmak istediğiniz dili seçin";
+
+// Cüzdan
+"Balance" = "Cüzdan";
+"See balance / Scan card" = "Cüzdanı görüntüle / Kart okut";
+"Scan Card" = "Kart Okut";
+"Wallet: " = "Cüzdan: ";
+
+// Uygulamayı paylaş
+"Check out this app!" = "Bu uygulamaya sen de katıl!";
+
+// Otobüsler
+"Bus Locations" = "Otobüsler";
+"Journey: " = "Sefer: ";
+"Destination: " = "Varış noktası: ";
+"TBD" = "Belirlenmemiş";
+
+// Duraklar
+"Bus Stops" = "Duraklar";
+
+// Bayiler
+"Dealer Locations" = "Bayiler";
+
+// Bağlantı
+"No Internet Connection" = "İnternet Bağlantısı Yok";
+"Please check your internet connection and try again." = "Lütfen internet bağlantınızı kontrol edin ve tekrar deneyin.";
+"Connected!" = "Bağlandınız!";
+"Connection Established" = "İnternet Bağlantınız Kuruldu.";
+"Your connection to our servers has been established" = "Sunucularımıza başarıyla bağlandınız";
+"An Error Has Occured" = "Bir Hata Meydana Geldi";
+
+// Alerts
+"Dismiss" = "Kapat";
+"Invalid Email" = "Geçersiz E-Posta";
+"Please enter a valid email" = "Lütfen geçerli bir e-posta girin";
+"Invalid Password" = "Geçersiz Şifre";
+"Please enter a valid password" = "Lütfen geçerli bir şifre girin";
+"Invalid Username" = "Geçersiz Kullanıcı Adı";
+"Please enter a valid username" = "Lütfen geçerli bir kullanıcı adı girin";
+"Unknown Registration Error" = "Bilinmeyen Kaydolma Hatası";
+"Unknown Error Signing In" = "Bilinmeyen Giriş Yapma Hatası";
+"Log Out Error" = "Çıkış Yapma Hatası";
+"Password Reset" = "Şifre Değiştirme";
+"Password reset mail has been sent to your email address." = "Şifrenizi gönderilen e-postadan değiştirin.";
+"Error Reseting Password" = "Şifre Sıfırlama Hatası";
+"Error Fetching User" = "Kullanıcı Bilgilerini Getirme Hatası";
+"Unknown Error Fetching User" = "Bilinmeyen Hata: Kullanıcı Bilgilerini Getirme Hatası";
+"Error Fetching User's Location" = "Kullanıcı Konum Hatası";
+"Error connecting to the Internet" = "Internet Bağlantısı Hatası";
+"Verification Sent" = "Onay Linki";
+"Please verify your email" = "Lütfen e-postanızı onaylayın";
+"WIP" = "Geliştiriliyor";
+"This function is currently in work in progress" = "Bu özellik şu an geliştirilme aşamasında";
+"Restart Required" = "Yeniden Başlatma Gerekli";
+"Your app needs to be restarted to change the language" = "Dili değiştirmek için uygulamayı yeniden başlatın";
+
+"Done" = "Bitti";

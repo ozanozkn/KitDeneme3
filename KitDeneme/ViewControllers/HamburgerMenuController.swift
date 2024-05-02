@@ -2,7 +2,13 @@ import UIKit
 
 class HamburgerMenuController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
-    let menuItems = ["Bus Locations", "Bus Stops", "Dealers Locations", "User's Balance", "User Settings", "Share App", "Change Language"]
+    let menuItems = [String(localized: "Bus Locations", table: "Localizable"), 
+                     String(localized: "Bus Stops", table: "Localizable"),
+                     String(localized: "Dealers Locations", table: "Localizable"),
+                     String(localized: "User's Balance", table: "Localizable"),
+                     String(localized: "User Settings", table: "Localizable"),
+                     String(localized: "Share App", table: "Localizable"),
+                     String(localized: "Change Language", table: "Localizable")]
     let tableView = UITableView()
     
     
@@ -98,6 +104,8 @@ class HamburgerMenuController: UIViewController, UITableViewDelegate, UITableVie
             
         case 6:
             // Change Language functionality
+            let changeLanguageViewController = ChangeLanguageViewController()
+            navigationController?.pushViewController(changeLanguageViewController, animated: true)
             break
             
         default:
@@ -106,7 +114,7 @@ class HamburgerMenuController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     private func shareApp() {
-        let shareText = "Check out this app!"
+        let shareText = String(localized: "Check out this app!", table: "Localizable")
         if let link = URL(string: "https://example.com") {
             let objectsToShare: [Any] = [shareText, link]
             let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)

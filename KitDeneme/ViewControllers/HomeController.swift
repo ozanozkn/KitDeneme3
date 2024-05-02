@@ -66,7 +66,8 @@ class HomeController: UIViewController, MKMapViewDelegate {
             }
             
             if let user = user {
-                self.usernameLabel.text = "Hello \(user.username)!"
+                self.usernameLabel.text = String(localized: "Hello", table:"Localizable")
+                self.usernameLabel.text! += " \(user.username)!"
             }
             
         }

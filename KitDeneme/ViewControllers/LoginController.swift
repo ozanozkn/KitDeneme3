@@ -9,13 +9,13 @@ import UIKit
 import Firebase
 class LoginController: UIViewController, UITextFieldDelegate {
 
-    private let headerView = AuthHeaderView(title: "Sign In", subTitle: "Sign in to your account")
+    private let headerView = AuthHeaderView(title: String(localized: "Sign In", table: "Localizable"), subTitle: String(localized: "Sign in to your account", table: "Localizable"))
     private let emailField = CustomTextField(fieldType: .email)
     private let passwordField = CustomTextField(fieldType: .password)
     
-    private let signInButton = CustomButton(title: "Sign In", hasBackground: true, fontSize: .big)
-    private let newUserButton = CustomButton(title: "New User? Create Account.", fontSize: .medium)
-    private let forgotPasswordButton = CustomButton(title: "Forgot Password?", fontSize: .small)
+    private let signInButton = CustomButton(title: String(localized: "Sign In", table: "Localizable"), hasBackground: true, fontSize: .big)
+    private let newUserButton = CustomButton(title: String(localized: "New User? Create Account.", table: "Localizable"), fontSize: .medium)
+    private let forgotPasswordButton = CustomButton(title: String(localized: "Forgot Password?", table: "Localizable"), fontSize: .small)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -131,8 +131,8 @@ class LoginController: UIViewController, UITextFieldDelegate {
                     }
                 } else {
                     DispatchQueue.main.async {
-                        let alert = UIAlertController(title: "Verification Required", message: "Please verify your email to use the application, verification link has been sent to your email address.", preferredStyle: .alert)
-                        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                        let alert = UIAlertController(title: String(localized: "Verification Required", table: "Localizable"), message: String(localized: "Please verify your email to use the application, verification link has been sent to your email address.", table: "Localizable"), preferredStyle: .alert)
+                        alert.addAction(UIAlertAction(title: String(localized: "OK", table: "Localizable"), style: .default, handler: nil))
                         self.present(alert, animated: true, completion: nil)
                     }
                 }

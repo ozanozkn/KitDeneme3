@@ -49,7 +49,7 @@ class BusLocationsViewController: UIViewController {
     
     private func setupUI() {
         view.backgroundColor = .white
-        title = "Bus Locations"
+        title = String(localized: "Bus Locations", table: "Localizable")
         
         view.addSubview(mapView)
         NSLayoutConstraint.activate([
@@ -151,8 +151,11 @@ extension BusLocationsViewController: BusLocationsViewModelDelegate {
             for vehicle in self.busLocations {
                 let annotation = MKPointAnnotation()
                 annotation.coordinate = CLLocationCoordinate2D(latitude: vehicle.latitude, longitude: vehicle.longitude)
-                annotation.title = "Journey: " + (vehicle.journeyID ?? "TBD")
-                annotation.subtitle = "Destination: " + (vehicle.destination ?? "TBD")
+                annotation.title = String(localized: "Journey: ", table: "Localizable")
+                annotation.title! += (vehicle.journeyID ?? String(localized: "TBD", table: "Localizable"))
+                
+                annotation.subtitle = String(localized: "Destination: ", table: "Localizable")
+                annotation.subtitle! += (vehicle.destination ?? String(localized: "TBD", table: "Localizable"))
                 self.mapView.addAnnotation(annotation)
             }
         }

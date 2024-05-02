@@ -23,7 +23,7 @@ class UserSettingsController: UIViewController {
     
     private func setupLogoutButton() {
         
-        logoutButton.setTitle("Logout", for: .normal)
+        logoutButton.setTitle(String(localized: "Logout", table: "Localizable"), for: .normal)
         logoutButton.setTitleColor(.red, for: .normal)
 //        logoutButton.backgroundColor = .white
 //        logoutButton.layer.cornerRadius = 8
@@ -40,35 +40,39 @@ class UserSettingsController: UIViewController {
     }
     
     private func setupChangePasswordButton() {
-            
-            changePasswordButton.setTitle("Change Password", for: .normal)
-            changePasswordButton.setTitleColor(.systemBlue, for: .normal)
-//            changePasswordButton.backgroundColor = .white
-//            changePasswordButton.layer.cornerRadius = 8
-//            changePasswordButton.layer.borderWidth = 1
-//            changePasswordButton.layer.borderColor = UIColor.white.cgColor
-            changePasswordButton.addTarget(self, action: #selector(didTapChangePassword), for: .touchUpInside)
-            view.addSubview(changePasswordButton)
-            
-            changePasswordButton.translatesAutoresizingMaskIntoConstraints = false
-            NSLayoutConstraint.activate([
-                changePasswordButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-                changePasswordButton.topAnchor.constraint(equalTo: logoutButton.bottomAnchor, constant: 20)
-            ])
-        }
+        
+        changePasswordButton.setTitle(String(localized: "Change Password", table: "Localizable"), for: .normal)
+        changePasswordButton.setTitleColor(.systemBlue, for: .normal)
+        //            changePasswordButton.backgroundColor = .white
+        //            changePasswordButton.layer.cornerRadius = 8
+        //            changePasswordButton.layer.borderWidth = 1
+        //            changePasswordButton.layer.borderColor = UIColor.white.cgColor
+        changePasswordButton.addTarget(self, action: #selector(didTapChangePassword), for: .touchUpInside)
+        view.addSubview(changePasswordButton)
+        
+        changePasswordButton.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            changePasswordButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            changePasswordButton.topAnchor.constraint(equalTo: logoutButton.bottomAnchor, constant: 20)
+        ])
+        
+    }
     
     private func setupDeleteAccountButton() {
-            deleteAccountButton.setTitle("Delete Account", for: .normal)
-            deleteAccountButton.setTitleColor(.red, for: .normal)
-            deleteAccountButton.addTarget(self, action: #selector(didTapDeleteAccount), for: .touchUpInside)
-            view.addSubview(deleteAccountButton)
-            
-            deleteAccountButton.translatesAutoresizingMaskIntoConstraints = false
-            NSLayoutConstraint.activate([
-                deleteAccountButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-                deleteAccountButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20) // Position at the bottom
-            ])
-        }
+        
+        deleteAccountButton.setTitle(String(localized: "Delete Account", table: "Localizable"), for: .normal)
+        
+        deleteAccountButton.setTitleColor(.red, for: .normal)
+        deleteAccountButton.addTarget(self, action: #selector(didTapDeleteAccount), for: .touchUpInside)
+        view.addSubview(deleteAccountButton)
+        
+        deleteAccountButton.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            deleteAccountButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            deleteAccountButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20) // Position at the bottom
+        ])
+        
+    }
     
     @objc private func didTapLogout() {
         AuthService.shared.signOut { [weak self] error in

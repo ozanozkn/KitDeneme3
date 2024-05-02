@@ -14,7 +14,7 @@ class AlertManager {
         DispatchQueue.main.async {
             let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         
-            alert.addAction(UIAlertAction(title: "Dismiss", style: .default, handler: nil))
+            alert.addAction(UIAlertAction(title: String(localized: "Dismiss", table: "Localizable"), style: .default, handler: nil))
             
             vc.present(alert, animated: true)
         }
@@ -24,44 +24,44 @@ class AlertManager {
 // MARK: - Show Validation Alerts
 extension AlertManager {
     public static func showInvalidEmailAlert(on vc: UIViewController) {
-        self.showBasicAlert(on: vc, title: "Invalid Email", message: "Please enter a valid email")
+        self.showBasicAlert(on: vc, title: String(localized: "Invalid Email", table: "Localizable"), message: String(localized: "Please enter a valid email", table: "Localizable"))
     }
     
     public static func showInvalidPasswordAlert(on vc: UIViewController) {
-        self.showBasicAlert(on: vc, title: "Invalid Password", message: "Please enter a valid password")
+        self.showBasicAlert(on: vc, title: String(localized: "Invalid Password", table: "Localizable"), message: String(localized: "Please enter a valid password", table: "Localizable"))
     }
     
     public static func showInvalidUsernameAlert(on vc: UIViewController) {
-        self.showBasicAlert(on: vc, title: "Invalid Username", message: "Please enter a valid username")
+        self.showBasicAlert(on: vc, title: String(localized: "Invalid Username", table: "Localizable"), message: String(localized: "Please enter a valid username", table: "Localizable"))
     }
 }
 
 // MARK: - Registration Errors
 extension AlertManager {
     public static func showRegistrationErrorAlert(on vc: UIViewController) {
-        self.showBasicAlert(on: vc, title: "Unknown Registration Error", message: nil)
+        self.showBasicAlert(on: vc, title: String(localized: "Unknown Registration Error", table: "Localizable"), message: nil)
     }
     
     public static func showRegistrationErrorAlert(on vc: UIViewController, with error: Error) {
-        self.showBasicAlert(on: vc, title: "Unknown Registration Error", message: "\(error.localizedDescription)")
+        self.showBasicAlert(on: vc, title: String(localized: "Unknown Registration Error", table: "Localizable"), message: "\(error.localizedDescription)")
     }
 }
 
 // MARK: - Log In Errors
 extension AlertManager {
     public static func showSignInErrorAlert(on vc: UIViewController) {
-        self.showBasicAlert(on: vc, title: "Unknown Error Signing In", message: nil)
+        self.showBasicAlert(on: vc, title: String(localized: "Unknown Error Signing In", table: "Localizable"), message: nil)
     }
     
     public static func showSignInErrorAlert(on vc: UIViewController, with error: Error) {
-        self.showBasicAlert(on: vc, title: "Error Signing In", message: "\(error.localizedDescription)")
+        self.showBasicAlert(on: vc, title: String(localized: "Unknown Error Signing In", table: "Localizable"), message: "\(error.localizedDescription)")
     }
 }
 
 // MARK: - Log Out Errors
 extension AlertManager {
     public static func showLogoutError(on vc: UIViewController, with error: Error) {
-        self.showBasicAlert(on: vc, title: "Log Out Error", message: "\(error.localizedDescription)")
+        self.showBasicAlert(on: vc, title: String(localized: "Log Out Error", table: "Localizable"), message: "\(error.localizedDescription)")
     }
 }
 
@@ -69,11 +69,11 @@ extension AlertManager {
 // MARK: - Forgot Password
 extension AlertManager {
     public static func showPasswordResetSent(on vc: UIViewController) {
-        self.showBasicAlert(on: vc, title: "Password Reset", message: "Password reset mail has been sent to your email address.")
+        self.showBasicAlert(on: vc, title: String(localized: "Password Reset", table: "Localizable"), message: String(localized: "Password reset mail has been sent to your email address.", table: "Localizable"))
     }
     
     public static func showErrorSendingPasswordReset(on vc: UIViewController, with error: Error) {
-        self.showBasicAlert(on: vc, title: "Error Sending Password Reset", message: "\(error.localizedDescription)")
+        self.showBasicAlert(on: vc, title: String(localized: "Error Reseting Password", table: "Localizable"), message: "\(error.localizedDescription)")
     }
 }
 
@@ -81,36 +81,42 @@ extension AlertManager {
 
 extension AlertManager {
     public static func showFetchingUserError(on vc: UIViewController, with error: Error) {
-        showBasicAlert(on: vc, title: "Error Fetching User", message: "\(error.localizedDescription)")
+        showBasicAlert(on: vc, title: String(localized: "Error Fetching User", table: "Localizable"), message: "\(error.localizedDescription)")
     }
     
     public static func showUnknownFetchingUserError(on vc: UIViewController) {
-        showBasicAlert(on: vc, title: "Unknown Error Fetching User", message: nil)
+        showBasicAlert(on: vc, title: String(localized: "Unknown Error Fetching User", table: "Localizable"), message: nil)
     }
 }
 
 
 extension AlertManager {
     public static func showLocationDataError(on vc: UIViewController, title: String, message: String) {
-        showBasicAlert(on: vc, title: "Error Fetching User's Location", message: nil)
+        showBasicAlert(on: vc, title: String(localized: "Error Fetching User's Location", table: "Localizable"), message: nil)
     }
 }
 
 extension AlertManager {
     public static func showConnectionError(on vc: UIViewController) {
-        showBasicAlert(on: vc, title: "Error Connecting to the Internet", message: nil)
+        showBasicAlert(on: vc, title: String(localized: "Error Connecting to the Internet", table: "Localizable"), message: nil)
     }
 }
 
 extension AlertManager {
     public static func mailVerificationSent(on vc: UIViewController) {
-        showBasicAlert(on: vc, title: "Verification Sent", message: "Please verify your email")
+        showBasicAlert(on: vc, title: String(localized: "Verification Sent", table: "Localizable"), message: String(localized: "Please verify your email", table: "Localizable"))
     }
 }
 
 extension AlertManager {
     public static func alertWIP(on vc: UIViewController) {
-        showBasicAlert(on: vc, title: "WIP", message: "This function is currently in work in progress.")
+        showBasicAlert(on: vc, title: String(localized: "WIP", table: "Localizable"), message: String(localized: "This function is currently in work in progress", table: "Localizable"))
+    }
+}
+
+extension AlertManager {
+    public static func alertRestartApp(on vc: UIViewController) {
+        showBasicAlert(on: vc, title: String(localized: "Restart Required", table: "Localizable"), message: String(localized: "Your app needs to be restarted to change the language", table: "Localizable"))
     }
 }
 

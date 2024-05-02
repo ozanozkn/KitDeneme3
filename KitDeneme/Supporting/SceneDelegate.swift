@@ -71,7 +71,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     private func checkInternetConnection() {
             if !(NetworkReachabilityManager.default?.isReachable ?? false) {
-                self.showAlert(title: "No Internet Connection", message: "Please check your internet connection.")
+                self.showAlert(title: String(localized: "No Internet Connection", table: "Localizable"), message: String(localized: "Please check your internet connection and try again.", table: "Localizable"))
                 
             }
         }
@@ -81,13 +81,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             networkReachability?.startListening(onUpdatePerforming: { [weak self] status in
                 switch status {
                 case .notReachable:
-                    self?.showAlert(title: "No Internet Connection.", message: "Please check your internet connection and try again.")
+                    self?.showAlert(title: String(localized: "No Internet Connection", table: "Localizable"), message: String(localized: "Please check your internet connection and try again.", table: "Localizable"))
                     break
                 case .reachable:
-                    self?.showAlert(title: "Connection established.", message: "")
+                    self?.showAlert(title: String(localized: "Connection Established", table: "Localizable"), message: String(localized: "Your connection to our servers has been established", table: "Localizable"))
                     break
                 case .unknown:
-                    self?.showAlert(title: "unknown", message: "")
+                    self?.showAlert(title: String(localized: "An Error Has Occured", table: "Localizable"), message: "")
                     break
                 }
             })
@@ -101,7 +101,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     private func showAlert(title: String, message: String) {
             let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
-            let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+        let okAction = UIAlertAction(title: String(localized: "OK", table: "Localizable"), style: .default, handler: nil)
             alertController.addAction(okAction)
             window?.rootViewController?.present(alertController, animated: true, completion: nil)
         }

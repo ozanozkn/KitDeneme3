@@ -10,17 +10,17 @@ import FirebaseAuth
 
 class DeleteAccountController: UIViewController {
     
-    private let headerView = AuthHeaderView(title: "Delete Account", subTitle: "Enter your password to delete the account")
+    private let headerView = AuthHeaderView(title: String(localized: "Delete Account", table: "Localizable"), subTitle: String(localized: "Enter your password to delete the account", table: "Localizable"))
     
     
     private let passwordField: CustomTextField = {
         let textField = CustomTextField(fieldType: .password)
-        textField.placeholder = "Enter Password"
+        textField.placeholder = String(localized: "Password", table: "Localizable")
         return textField
     }()
     
     private let deleteAccountButton: CustomButton = {
-        let button = CustomButton(title: "Delete Account", hasBackground: true, fontSize: .medium)
+        let button = CustomButton(title: String(localized: "Delete Account", table: "Localizable"), hasBackground: true, fontSize: .medium)
         button.addTarget(self, action: #selector(didTapDeleteAccount), for: .touchUpInside)
         return button
     }()
@@ -45,6 +45,7 @@ class DeleteAccountController: UIViewController {
         headerView.translatesAutoresizingMaskIntoConstraints = false
         passwordField.translatesAutoresizingMaskIntoConstraints = false
         deleteAccountButton.translatesAutoresizingMaskIntoConstraints = false
+        deleteAccountButton.backgroundColor = UIColor(hex: "DE1616")
         
         NSLayoutConstraint.activate([
             self.headerView.topAnchor.constraint(equalTo: self.view.topAnchor),
@@ -67,7 +68,7 @@ class DeleteAccountController: UIViewController {
     
     @objc private func didTapDeleteAccount() {
         guard let password = passwordField.text, !password.isEmpty else {
-            showAlert(message: "Please enter your password")
+            showAlert(message: String(localized: "Please enter your password", table: "Localizable"))
             return
         }
         
@@ -80,11 +81,11 @@ class DeleteAccountController: UIViewController {
                 self.showAlert(message: "Error: \(error.localizedDescription)")
             } else {
                 // Ask for confirmation
-                let confirmationAlert = UIAlertController(title: "Confirmation", message: "Are you sure you want to delete your account?", preferredStyle: .alert)
-                confirmationAlert.addAction(UIAlertAction(title: "Yes", style: .destructive) { _ in
+                let confirmationAlert = UIAlertController(title: String(localized: "Confirmation", table: "Localizable"), message: String(localized: "Are you sure you want to delete your account?", table: "Localizable"), preferredStyle: .alert)
+                confirmationAlert.addAction(UIAlertAction(title: String(localized: "Yes", table: "Localizable"), style: .destructive) { _ in
                     self.deleteAccount()
                 })
-                confirmationAlert.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
+                confirmationAlert.addAction(UIAlertAction(title: String(localized: "No", table: "Localizable"), style: .cancel, handler: nil))
                 self.present(confirmationAlert, animated: true, completion: nil)
             }
         }
@@ -101,7 +102,7 @@ class DeleteAccountController: UIViewController {
                 self.showAlert(message: "Error: \(error.localizedDescription)")
             } else {
                 print("call works and doc deleted")
-                self.showAlertWithCompletion(message: "Account deleted successfully.") {
+                self.showAlertWithCompletion(message: String(localized: "Account deleted successfully.", table: "Localizable")) {
                     if let sceneDelegate = self.view.window?.windowScene?.delegate as? SceneDelegate {
                         sceneDelegate.checkAuthentication()
                     }
@@ -127,14 +128,14 @@ class DeleteAccountController: UIViewController {
     
     private func showAlert(message: String) {
         let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        alert.addAction(UIAlertAction(title: String(localized: "OK", table: "Localizable"), style: .default, handler: nil))
         present(alert, animated: true, completion: nil)
         
     }
     
     private func showAlertWithCompletion(message: String, completion: (() -> Void)?) {
         let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default) { _ in
+        alert.addAction(UIAlertAction(title: String(localized: "OK", table: "Localizable"), style: .default) { _ in
             completion?()
         })
         present(alert, animated: true, completion: nil)

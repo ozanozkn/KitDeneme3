@@ -32,9 +32,9 @@ class ConnectivityManager: NSObject {
             networkReachability?.startListening(onUpdatePerforming: { [weak self] status in
                 switch status {
                 case .notReachable:
-                    self?.showAlert(title: "No Internet Connection", message: "Please check your internet connection.")
+                    self?.showAlert(title: String(localized: "No Internet Connection", table: "Localizable"), message: String(localized: "Please check your internet connection.", table: "Localizable"))
                 case .reachable(_), .unknown:
-                    self?.showAlert(title: "Connected!", message: "")
+                    self?.showAlert(title: String(localized: "Connected!", table: "Localizable"), message: String(localized: "Connection established.", table: "Localizable"))
                     break
                 }
             })
@@ -50,7 +50,7 @@ class ConnectivityManager: NSObject {
     
     public func showAlert(title: String, message: String) {
             let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
-            let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+        let okAction = UIAlertAction(title: String(localized: "OK", table: "Localizable"), style: .default, handler: nil)
             alertController.addAction(okAction)
             window?.rootViewController?.present(alertController, animated: true, completion: nil)
         }
