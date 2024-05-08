@@ -49,3 +49,10 @@ class CustomTextField: UITextField {
         fatalError("init(coder: has not been implemented")
     }
 }
+
+extension UITextField {
+    func setValidation(isValid: Bool) {
+        layer.borderWidth = isValid ? 0 : 1 // 0 for valid, 1 for invalid
+        layer.borderColor = isValid ? UIColor.clear.cgColor : UIColor.red.cgColor
+    }
+}

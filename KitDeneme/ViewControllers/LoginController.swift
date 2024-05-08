@@ -93,8 +93,23 @@ class LoginController: UIViewController, UITextFieldDelegate {
             self.forgotPasswordButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.85)
         ])
     }
+    
+    private func updateTextFieldValidation() {
+        
+        // Validate email
+        let isEmailValid = Validator.isValidEmail(for: emailField.text ?? "")
+        emailField.setValidation(isValid: isEmailValid)
+        
+        // Validate password
+        let isPasswordValid = Validator.isPasswordValid(for: passwordField.text ?? "")
+        passwordField.setValidation(isValid: isPasswordValid)
+        
+    }
+    
 //SELECTORS
     @objc private func didTapSignIn() {
+        updateTextFieldValidation()
+        
         let loginRequest = LoginUserRequest(
             email: self.emailField.text ?? "",
             password: self.passwordField.text ?? ""
@@ -116,6 +131,8 @@ class LoginController: UIViewController, UITextFieldDelegate {
             guard let self = self else { return }
             if let error = error {
                 AlertManager.showSignInErrorAlert(on: self, with: error)
+                self.emailField.setValidation(isValid: false)
+                self.passwordField.setValidation(isValid: false)
                 return
             }
             

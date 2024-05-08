@@ -24,17 +24,18 @@ class HomeController: UIViewController, MKMapViewDelegate {
     }()
     
     let menuButton: UIButton = {
-            let button = UIButton(type: .system)
-            let image = UIImage(systemName: "list.dash") // Hamburger icon
-            button.setImage(image, for: .normal)
-            button.backgroundColor = .white
-            button.tintColor = .systemBlue
-            button.layer.cornerRadius = 10 // Set corner radius to create a rounded rectangle
-            button.layer.masksToBounds = true // Clip sublayers to the rounded corners
-            
-            button.addTarget(self, action: #selector(didTapMenu), for: .touchUpInside)
-            return button
-        }()
+        let button = UIButton(type: .system)
+        let image = UIImage(systemName: "list.dash") // Hamburger icon
+        button.setImage(image, for: .normal)
+        button.backgroundColor = UIColor(hex: "F5BE0B")
+        button.tintColor = .black
+        button.layer.cornerRadius = 10 // Set corner radius to create a rounded rectangle
+        button.layer.masksToBounds = true // Clip sublayers to the rounded corners
+        
+        button.addTarget(self, action: #selector(didTapMenu), for: .touchUpInside)
+        return button
+        
+    }()
     
     let usernameLabel: CustomLabel = {
             let label = CustomLabel(text: "", fontSize: 16)
@@ -66,7 +67,7 @@ class HomeController: UIViewController, MKMapViewDelegate {
             }
             
             if let user = user {
-                self.usernameLabel.text = String(localized: "Hello", table:"Localizable")
+                self.usernameLabel.text = String(localized: "Hello", table: "Localizable")
                 self.usernameLabel.text! += " \(user.username)!"
             }
             

@@ -138,4 +138,32 @@ class AuthService {
         
         
     }
+    
+    
+    
+    public func isEmailRegistered(_ email: String, completion: @escaping (Bool, Error?) -> Void) {
+        let db = Firestore.firestore()
+        let usersRef = db.collection("users")
+        
+        usersRef.whereField("email", isEqualTo: email).getDocuments { (querySnapshot, error) in
+            if let error = error {
+                // An error occurred while querying Firestore
+                print("Error querying Firestore:", error)
+                completion(false, error)
+                return
+            }
+            
+            if let documents = querySnapshot?.documents, !documents.isEmpty {
+                // Email is registered
+                print("Email is registered.")
+                completion(true, nil)
+            } else {
+                // Email is not registered
+                print("Email is not registered.")
+                completion(false, nil)
+            }
+        }
+    }
+
+
 }

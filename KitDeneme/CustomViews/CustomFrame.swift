@@ -14,7 +14,7 @@ class CustomLabel: UILabel {
     init(text: String, fontSize: CGFloat) {
         super.init(frame: .zero)
         self.text = text
-        self.font = UIFont.systemFont(ofSize: fontSize)
+        self.font = UIFont.systemFont(ofSize: fontSize, weight: UIFont.Weight.bold)
         setup()
     }
     
@@ -34,7 +34,7 @@ class CustomLabel: UILabel {
     
     private func updateBackground() {
         if hasBackground {
-            backgroundColor = .white
+            backgroundColor = UIColor(hex: "F5BE0B")
             textColor = .black
             layer.cornerRadius = 12
             clipsToBounds = true

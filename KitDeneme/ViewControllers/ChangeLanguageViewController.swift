@@ -33,7 +33,7 @@ class ChangeLanguageViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
-        self.view.backgroundColor = .white
+        self.view.backgroundColor = .systemBackground
         
         turkishButton.addTarget(self, action: #selector(didTapTurkishButton), for: .touchUpInside)
         englishButton.addTarget(self, action: #selector(didTapEnglishButton), for: .touchUpInside)

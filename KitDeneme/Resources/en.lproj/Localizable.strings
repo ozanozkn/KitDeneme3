@@ -138,5 +138,12 @@
 "Bu özellik şu an geliştirilme aşamasında" = "This function is currently in work in progress";
 "Yeniden Başlatma Gerekli" = "Restart Required";
 "Dili değiştirmek için uygulamayı yeniden başlatın" = "Your app needs to be restarted to change the language";
+"Girdiğiniz e-posta bulunamadı" = "The email you entered is not found";
+"E-Posta Bulunamadı" = "Email Not Found";
+"Girdiğiniz e-posta zaten kullanılıyor" = "The email you entered is already in use";
+"E-Posta Kullanımda" = "Email Already In Use";
+"Girdiğiniz e-posta veya şifre yanlış, lütfen kontrol edip tekrar deneyin" = "The email/password you entered is incorrect";
+"Hata: Girmiş olduğunuz şifre yanlış, lütfen kontrol edip tekrar deneyin" = "Error: The password you just entered is incorrect";
+"Güvenlik" = "Security";
 
 "Bitti" = "Done";

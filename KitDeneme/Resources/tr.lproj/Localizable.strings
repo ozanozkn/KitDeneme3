@@ -123,7 +123,7 @@
 "Invalid Username" = "Geçersiz Kullanıcı Adı";
 "Please enter a valid username" = "Lütfen geçerli bir kullanıcı adı girin";
 "Unknown Registration Error" = "Bilinmeyen Kaydolma Hatası";
-"Unknown Error Signing In" = "Bilinmeyen Giriş Yapma Hatası";
+"Error Signing In" = "Giriş Yapma Hatası";
 "Log Out Error" = "Çıkış Yapma Hatası";
 "Password Reset" = "Şifre Değiştirme";
 "Password reset mail has been sent to your email address." = "Şifrenizi gönderilen e-postadan değiştirin.";
@@ -138,5 +138,12 @@
 "This function is currently in work in progress" = "Bu özellik şu an geliştirilme aşamasında";
 "Restart Required" = "Yeniden Başlatma Gerekli";
 "Your app needs to be restarted to change the language" = "Dili değiştirmek için uygulamayı yeniden başlatın";
+"The email you entered is not found" = "Girdiğiniz e-posta bulunamadı";
+"Email Not Found" = "E-Posta Bulunamadı";
+"The email you entered is already in use" = "Girdiğiniz e-posta zaten kullanılıyor";
+"Email Already In Use" = "E-Posta Kullanımda";
+"The email/password you entered is incorrect" = "Girdiğiniz e-posta veya şifre yanlış, lütfen kontrol edip tekrar deneyin";
+"Error: The password you just entered is incorrect" = "Hata: Girmiş olduğunuz şifre yanlış, lütfen kontrol edip tekrar deneyin";
+"Security" = "Güvenlik";
 
 "Done" = "Bitti";

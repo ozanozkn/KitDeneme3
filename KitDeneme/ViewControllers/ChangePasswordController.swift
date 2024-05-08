@@ -37,7 +37,7 @@ class ChangePasswordController: UIViewController {
         
         override func viewDidLoad() {
             super.viewDidLoad()
-            self.view.backgroundColor = .white
+            self.view.backgroundColor = .systemBackground
             
             let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
             view.addGestureRecognizer(tapGesture)
@@ -93,7 +93,26 @@ class ChangePasswordController: UIViewController {
     
     // MARK: - Actions
     
+    private func updateTextFieldValidation() {
+        
+        // Validate password
+        let isPasswordValid = Validator.isPasswordValid(for: currentPasswordField.text ?? "")
+        currentPasswordField.setValidation(isValid: isPasswordValid)
+        
+        // Validate password
+        let isNewPasswordValid = Validator.isPasswordValid(for: newPasswordField.text ?? "")
+        newPasswordField.setValidation(isValid: isNewPasswordValid)
+        
+        let isNewPasswordAgainValid = Validator.isPasswordValid(for: newPasswordAgainField.text ?? "")
+        newPasswordAgainField.setValidation(isValid: isNewPasswordAgainValid)
+        
+        
+        
+    }
+    
     @objc private func didTapChangePassword() {
+        updateTextFieldValidation()
+        
         guard let currentPassword = currentPasswordField.text, !currentPassword.isEmpty,
                 let newPassword = newPasswordField.text, !newPassword.isEmpty,
                 let newPasswordAgain = newPasswordAgainField.text, !newPasswordAgain.isEmpty else {

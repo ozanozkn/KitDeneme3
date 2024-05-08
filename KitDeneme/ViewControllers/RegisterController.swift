@@ -110,7 +110,29 @@ class RegisterController: UIViewController {
         viewModel.delegate = self
     }
     
+    // MARK: - Text Field Validation
+        
+    private func updateTextFieldValidation() {
+        // Validate username
+        let isUsernameValid = Validator.isValidUsername(for: usernameField.text ?? "")
+        usernameField.setValidation(isValid: isUsernameValid)
+        
+        // Validate email
+        let isEmailValid = Validator.isValidEmail(for: emailField.text ?? "")
+        emailField.setValidation(isValid: isEmailValid)
+        
+        // Validate password
+        let isPasswordValid = Validator.isPasswordValid(for: passwordField.text ?? "")
+        passwordField.setValidation(isValid: isPasswordValid)
+        
+    }
+    
     @objc private func didTapSignUp() {
+        // Validate text fields
+        updateTextFieldValidation()
+               
+         
+        
         let registerUserRequest = RegisterUserRequest(
                     username: self.usernameField.text ?? "",
                     email: self.emailField.text ?? "",
@@ -135,7 +157,21 @@ class RegisterController: UIViewController {
                 return
             }
         
-        viewModel.registerUser(username: registerUserRequest.username, email: registerUserRequest.email, password: registerUserRequest.password)
+        AuthService.shared.isEmailRegistered(registerUserRequest.email) { isRegistered, error in
+            if let error = error {
+                print("Error checking email registration:", error)
+                // Show an alert for error
+                return
+            }
+            
+            if isRegistered {
+                AlertManager.showEmailAlreadyInUse(on: self)
+            } else {
+                self.viewModel.registerUser(username: registerUserRequest.username, email: registerUserRequest.email, password: registerUserRequest.password)
+            }
+            
+        }
+        
         
     }
     
@@ -194,3 +230,4 @@ extension RegisterController: UITextViewDelegate {
         textView.delegate = self
     }
 }
+

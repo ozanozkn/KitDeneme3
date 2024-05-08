@@ -9,6 +9,7 @@ class HamburgerMenuController: UIViewController, UITableViewDelegate, UITableVie
                      String(localized: "User Settings", table: "Localizable"),
                      String(localized: "Share App", table: "Localizable"),
                      String(localized: "Change Language", table: "Localizable")]
+    
     let tableView = UITableView()
     
     
@@ -41,7 +42,7 @@ class HamburgerMenuController: UIViewController, UITableViewDelegate, UITableVie
             
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20), // Adjust the leading constraint as needed
             tableView.widthAnchor.constraint(equalToConstant: 200), // Set a fixed width or adjust as needed
-            tableView.heightAnchor.constraint(equalToConstant: CGFloat(menuItems.count) * 44.25) // Height based on number of rows
+            tableView.heightAnchor.constraint(equalToConstant: CGFloat(menuItems.count) * 44) // Height based on number of rows
 
             
         ])
@@ -77,10 +78,6 @@ class HamburgerMenuController: UIViewController, UITableViewDelegate, UITableVie
             
         case 2:
             // Navigate to Dealers Locations view
-//            if let sceneDelegate = self.view.window?.windowScene?.delegate as?
-//                SceneDelegate {
-//                sceneDelegate.goToController(with: DealerLocationsViewController())
-//            }
             let dealerLocationsViewController = DealerLocationsViewController()
             navigationController?.pushViewController(dealerLocationsViewController, animated: true)
             break

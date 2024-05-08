@@ -42,7 +42,7 @@ class ForgotPasswordController: UIViewController {
     
     // MARK: - UI Setup
     private func setupUI() {
-        self.view.backgroundColor = .white
+        self.view.backgroundColor = .systemBackground
         
         self.view.addSubview(headerView)
         self.view.addSubview(emailField)
@@ -73,8 +73,17 @@ class ForgotPasswordController: UIViewController {
         ])
     }
     
+    private func updateTextFieldValidation() {
+        // Validate email
+        let isEmailValid = Validator.isValidEmail(for: emailField.text ?? "")
+        emailField.setValidation(isValid: isEmailValid)
+        
+    }
+    
     // MARK: - Selectors
     @objc private func didTapForgotPassword() {
+        updateTextFieldValidation()
+        
         let email = self.emailField.text ?? ""
         
         if !Validator.isValidEmail(for: email) {
@@ -82,18 +91,33 @@ class ForgotPasswordController: UIViewController {
             return
         }
         
-        AuthService.shared.forgotPassword(with: email) { [weak self] error in
+        // Check if email is registered
+        AuthService.shared.isEmailRegistered(email) { [weak self] isRegistered, error in
             guard let self = self else { return }
             if let error = error {
-                AlertManager.showErrorSendingPasswordReset(on: self, with: error)
+                print("Error checking email registration:", error)
+                // Show an alert for error
                 return
             }
             
-            AlertManager.showPasswordResetSent(on: self)
+            if isRegistered {
+                // Email is registered, send password reset
+                AuthService.shared.forgotPassword(with: email) { [weak self] error in
+                    guard let self = self else { return }
+                    if let error = error {
+                        AlertManager.showErrorSendingPasswordReset(on: self, with: error)
+                        return
+                    }
+                    
+                    AlertManager.showPasswordResetSent(on: self)
+                }
+            } else {
+                // Email is not registered
+                AlertManager.showEmailNotFound(on: self)
+            }
         }
-        
-        // TODO: - Email validation
     }
+
   
     func textFieldDidBeginEditing(_ textField: UITextField) {
             // Open the keyboard when a text field is clicked
@@ -107,3 +131,4 @@ class ForgotPasswordController: UIViewController {
             view.endEditing(true)
         }
 }
+

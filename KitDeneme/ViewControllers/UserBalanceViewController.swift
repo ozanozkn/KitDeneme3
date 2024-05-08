@@ -30,7 +30,7 @@ class UserBalanceViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = .white
+        self.view.backgroundColor = .systemBackground
 
         self.setupUI()
         self.fetchUser()

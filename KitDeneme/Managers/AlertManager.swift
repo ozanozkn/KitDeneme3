@@ -50,11 +50,11 @@ extension AlertManager {
 // MARK: - Log In Errors
 extension AlertManager {
     public static func showSignInErrorAlert(on vc: UIViewController) {
-        self.showBasicAlert(on: vc, title: String(localized: "Unknown Error Signing In", table: "Localizable"), message: nil)
+        self.showBasicAlert(on: vc, title: String(localized: "Error Signing In", table: "Localizable"), message: nil)
     }
     
     public static func showSignInErrorAlert(on vc: UIViewController, with error: Error) {
-        self.showBasicAlert(on: vc, title: String(localized: "Unknown Error Signing In", table: "Localizable"), message: "\(error.localizedDescription)")
+        self.showBasicAlert(on: vc, title: String(localized: "Error Signing In", table: "Localizable"), message: String(localized: "The email/password you entered is incorrect", table: "Localizable"))
     }
 }
 
@@ -120,3 +120,14 @@ extension AlertManager {
     }
 }
 
+extension AlertManager {
+    public static func showEmailNotFound(on vc: UIViewController) {
+        showBasicAlert(on: vc, title: String(localized: "Email Not Found", table: "Localizable"), message: String(localized: "The email you entered is not found", table: "Localizable"))
+    }
+}
+
+extension AlertManager {
+    public static func showEmailAlreadyInUse(on vc: UIViewController) {
+        showBasicAlert(on: vc, title: String(localized: "Email Already In Use", table: "Localizable"), message: String(localized: "The email you entered is already in use", table: "Localizable"))
+    }
+}

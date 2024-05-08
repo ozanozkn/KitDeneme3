@@ -10,6 +10,7 @@
 		F63096172BDB91AC00B24F86 /* ChangeLanguageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63096162BDB91AC00B24F86 /* ChangeLanguageViewController.swift */; };
 		F630961C2BE366BC00B24F86 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F630961A2BE366BC00B24F86 /* Localizable.strings */; };
 		F630961F2BE3A8A800B24F86 /* Bundle+Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = F630961E2BE3A8A800B24F86 /* Bundle+Localization.swift */; };
+		F63096222BE4BA6800B24F86 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F63096202BE4BA6800B24F86 /* InfoPlist.strings */; };
 		F660FE1F2B9AEEAD001DCA0A /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F660FE1E2B9AEEAD001DCA0A /* LoginController.swift */; };
 		F660FE212B9AEED1001DCA0A /* ForgotPasswordController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F660FE202B9AEED1001DCA0A /* ForgotPasswordController.swift */; };
 		F660FE232B9AEEFE001DCA0A /* RegisterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F660FE222B9AEEFE001DCA0A /* RegisterController.swift */; };
@@ -83,6 +84,8 @@
 		F630961B2BE366BC00B24F86 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		F630961D2BE366D500B24F86 /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = tr; path = tr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		F630961E2BE3A8A800B24F86 /* Bundle+Localization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+Localization.swift"; sourceTree = "<group>"; };
+		F63096212BE4BA6800B24F86 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		F63096232BE4BA7100B24F86 /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = tr; path = tr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		F660FE1E2B9AEEAD001DCA0A /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		F660FE202B9AEED1001DCA0A /* ForgotPasswordController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordController.swift; sourceTree = "<group>"; };
 		F660FE222B9AEEFE001DCA0A /* RegisterController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterController.swift; sourceTree = "<group>"; };
@@ -167,6 +170,7 @@
 			isa = PBXGroup;
 			children = (
 				F630961A2BE366BC00B24F86 /* Localizable.strings */,
+				F63096202BE4BA6800B24F86 /* InfoPlist.strings */,
 				F630961E2BE3A8A800B24F86 /* Bundle+Localization.swift */,
 			);
 			path = Resources;
@@ -394,6 +398,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F630961C2BE366BC00B24F86 /* Localizable.strings in Resources */,
+				F63096222BE4BA6800B24F86 /* InfoPlist.strings in Resources */,
 				F6FD93BA2B9A09690075EB99 /* LaunchScreen.storyboard in Resources */,
 				F694AE742BAB1A9400022953 /* bus_stops.json in Resources */,
 				F6FD93B72B9A09690075EB99 /* Assets.xcassets in Resources */,
@@ -454,6 +459,15 @@
 				F630961D2BE366D500B24F86 /* tr */,
 			);
 			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		F63096202BE4BA6800B24F86 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F63096212BE4BA6800B24F86 /* en */,
+				F63096232BE4BA7100B24F86 /* tr */,
+			);
+			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 		F6FD93B82B9A09690075EB99 /* LaunchScreen.storyboard */ = {

@@ -9,69 +9,119 @@ import UIKit
 
 class UserSettingsController: UIViewController {
     
-    let logoutButton = UIButton(type: .system)
-    let changePasswordButton = UIButton(type: .system)
-    let deleteAccountButton = UIButton(type: .system)
+    private let headerView = AuthHeaderView(title: String(localized: "User Settings", table: "Localizable"), subTitle: String(localized: "Security", table: "Localizable"))
+    
+    private let changePasswordImageView: UIImageView = {
+        let imageView = UIImageView(image: UIImage(named: "password.png"))
+        imageView.contentMode = .scaleAspectFit
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        return imageView
+    }()
+    
+    private let logoutImageView: UIImageView = {
+        let imageView = UIImageView(image: UIImage(named: "logout.png"))
+        imageView.contentMode = .scaleAspectFit
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        return imageView
+    }()
+    
+    private let deleteAccountImageView: UIImageView = {
+        let imageView = UIImageView(image: UIImage(named: "deleteaccount.png"))
+        imageView.contentMode = .scaleAspectFit
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        return imageView
+    }()
+  
+    private let logoutButton: CustomButton = {
+        let button = CustomButton(title: String(localized: "Logout", table: "Localizable"), hasBackground: true, fontSize: .medium)
+        button.addTarget(self, action: #selector(didTapLogout), for: .touchUpInside)
+        return button
+    }()
+    
+    private let changePasswordButton: CustomButton = {
+        let button = CustomButton(title: String(localized: "Change Password", table: "Localizable"), hasBackground: true, fontSize: .medium)
+        button.addTarget(self, action: #selector(didTapChangePassword), for: .touchUpInside)
+        return button
+    }()
+    
+    private let deleteAccountButton: CustomButton = {
+        let button = CustomButton(title: String(localized: "Delete Account", table: "Localizable"), hasBackground: true, fontSize: .medium)
+        button.addTarget(self, action: #selector(didTapDeleteAccount), for: .touchUpInside)
+        return button
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
-        setupLogoutButton()
-        setupChangePasswordButton()
-        setupDeleteAccountButton()
+        view.backgroundColor = .systemBackground
+        setupUI()
     }
     
-    private func setupLogoutButton() {
+
+    private func setupUI() {
+        self.view.addSubview(headerView)
+        self.view.addSubview(logoutButton)
+        self.view.addSubview(changePasswordButton)
+        self.view.addSubview(deleteAccountButton)
+        self.view.addSubview(changePasswordImageView)
+        self.view.addSubview(logoutImageView)
+        self.view.addSubview(deleteAccountImageView)
+
         
-        logoutButton.setTitle(String(localized: "Logout", table: "Localizable"), for: .normal)
-        logoutButton.setTitleColor(.red, for: .normal)
-//        logoutButton.backgroundColor = .white
-//        logoutButton.layer.cornerRadius = 8
-//        logoutButton.layer.borderWidth = 1
-//        logoutButton.layer.borderColor = UIColor.white.cgColor
-        logoutButton.addTarget(self, action: #selector(didTapLogout), for: .touchUpInside)
-        view.addSubview(logoutButton)
+        headerView.translatesAutoresizingMaskIntoConstraints = false
         
         logoutButton.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            logoutButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            logoutButton.centerYAnchor.constraint(equalTo: view.centerYAnchor)
-        ])
-    }
-    
-    private func setupChangePasswordButton() {
+        logoutButton.backgroundColor = UIColor(hex: "DE1616")
+        logoutImageView.translatesAutoresizingMaskIntoConstraints = false
         
-        changePasswordButton.setTitle(String(localized: "Change Password", table: "Localizable"), for: .normal)
-        changePasswordButton.setTitleColor(.systemBlue, for: .normal)
-        //            changePasswordButton.backgroundColor = .white
-        //            changePasswordButton.layer.cornerRadius = 8
-        //            changePasswordButton.layer.borderWidth = 1
-        //            changePasswordButton.layer.borderColor = UIColor.white.cgColor
-        changePasswordButton.addTarget(self, action: #selector(didTapChangePassword), for: .touchUpInside)
-        view.addSubview(changePasswordButton)
-        
-        changePasswordButton.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            changePasswordButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            changePasswordButton.topAnchor.constraint(equalTo: logoutButton.bottomAnchor, constant: 20)
-        ])
-        
-    }
-    
-    private func setupDeleteAccountButton() {
-        
-        deleteAccountButton.setTitle(String(localized: "Delete Account", table: "Localizable"), for: .normal)
-        
-        deleteAccountButton.setTitleColor(.red, for: .normal)
-        deleteAccountButton.addTarget(self, action: #selector(didTapDeleteAccount), for: .touchUpInside)
-        view.addSubview(deleteAccountButton)
         
         deleteAccountButton.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            deleteAccountButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            deleteAccountButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20) // Position at the bottom
-        ])
+        deleteAccountButton.backgroundColor = UIColor(hex: "DE1616")
+        deleteAccountImageView.translatesAutoresizingMaskIntoConstraints = false
         
+        changePasswordButton.translatesAutoresizingMaskIntoConstraints = false
+        changePasswordImageView.translatesAutoresizingMaskIntoConstraints = false
+        
+        
+        NSLayoutConstraint.activate([
+            self.headerView.topAnchor.constraint(equalTo: self.view.topAnchor),
+            self.headerView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
+            self.headerView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
+            self.headerView.heightAnchor.constraint(equalToConstant: 222),
+            
+            self.changePasswordButton.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: 40),
+            self.changePasswordButton.centerXAnchor.constraint(equalTo: headerView.centerXAnchor),
+            self.changePasswordButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 65),
+            self.changePasswordButton.heightAnchor.constraint(equalToConstant: 55),
+            self.changePasswordButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.65),
+            
+            self.changePasswordImageView.centerYAnchor.constraint(equalTo: changePasswordButton.centerYAnchor),
+            self.changePasswordImageView.trailingAnchor.constraint(equalTo: changePasswordButton.leadingAnchor, constant: -15),
+            self.changePasswordImageView.widthAnchor.constraint(equalToConstant: 30),
+            self.changePasswordImageView.heightAnchor.constraint(equalToConstant: 30),
+            
+            self.logoutButton.topAnchor.constraint(equalTo: changePasswordButton.bottomAnchor, constant: 40),
+            self.logoutButton.centerXAnchor.constraint(equalTo: headerView.centerXAnchor),
+            self.logoutButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 65),
+            self.logoutButton.heightAnchor.constraint(equalToConstant: 55),
+            self.logoutButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.65),
+            
+            self.logoutImageView.centerYAnchor.constraint(equalTo: logoutButton.centerYAnchor),
+            self.logoutImageView.trailingAnchor.constraint(equalTo: logoutButton.leadingAnchor, constant: -15),
+            self.logoutImageView.widthAnchor.constraint(equalToConstant: 30),
+            self.logoutImageView.heightAnchor.constraint(equalToConstant: 30),
+            
+            self.deleteAccountButton.topAnchor.constraint(equalTo: logoutButton.bottomAnchor, constant: 40),
+            self.deleteAccountButton.centerXAnchor.constraint(equalTo: headerView.centerXAnchor),
+            self.deleteAccountButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 65),
+            self.deleteAccountButton.heightAnchor.constraint(equalToConstant: 55),
+            self.deleteAccountButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.65),
+            
+            self.deleteAccountImageView.centerYAnchor.constraint(equalTo: deleteAccountButton.centerYAnchor),
+            self.deleteAccountImageView.trailingAnchor.constraint(equalTo: deleteAccountButton.leadingAnchor, constant: -15),
+            self.deleteAccountImageView.widthAnchor.constraint(equalToConstant: 30),
+            self.deleteAccountImageView.heightAnchor.constraint(equalToConstant: 30),
+            
+        ])
     }
     
     @objc private func didTapLogout() {

@@ -28,7 +28,7 @@ class DeleteAccountController: UIViewController {
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        self.view.backgroundColor = .white
+        self.view.backgroundColor = .systemBackground
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         view.addGestureRecognizer(tapGesture)
@@ -36,6 +36,8 @@ class DeleteAccountController: UIViewController {
         self.setupUI()
         
     }
+    
+    
     
     private func setupUI() {
         self.view.addSubview(headerView)
@@ -66,7 +68,17 @@ class DeleteAccountController: UIViewController {
         ])
     }
     
+    private func updateTextFieldValidation() {
+        
+        // Validate password
+        let isPasswordValid = Validator.isPasswordValid(for: passwordField.text ?? "")
+        passwordField.setValidation(isValid: isPasswordValid)
+        
+    }
+    
     @objc private func didTapDeleteAccount() {
+        updateTextFieldValidation()
+        
         guard let password = passwordField.text, !password.isEmpty else {
             showAlert(message: String(localized: "Please enter your password", table: "Localizable"))
             return
@@ -77,8 +89,9 @@ class DeleteAccountController: UIViewController {
         
         user?.reauthenticate(with: credential) { [weak self] _, error in
             guard let self = self else { return }
-            if let error = error {
-                self.showAlert(message: "Error: \(error.localizedDescription)")
+            if error != nil {
+                self.showAlert(message: String(localized: "Error: The password you just entered is incorrect", table: "Localizable"))
+                passwordField.setValidation(isValid: false)
             } else {
                 // Ask for confirmation
                 let confirmationAlert = UIAlertController(title: String(localized: "Confirmation", table: "Localizable"), message: String(localized: "Are you sure you want to delete your account?", table: "Localizable"), preferredStyle: .alert)
