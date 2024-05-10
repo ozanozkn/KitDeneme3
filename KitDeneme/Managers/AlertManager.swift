@@ -28,7 +28,7 @@ extension AlertManager {
     }
     
     public static func showInvalidPasswordAlert(on vc: UIViewController) {
-        self.showBasicAlert(on: vc, title: String(localized: "Invalid Password", table: "Localizable"), message: String(localized: "Please enter a valid password", table: "Localizable"))
+        self.showBasicAlert(on: vc, title: String(localized: "Invalid Password", table: "Localizable"), message: String(localized: "Password must contain at least one special character, one uppercase letter and a number", table: "Localizable"))
     }
     
     public static func showInvalidUsernameAlert(on vc: UIViewController) {

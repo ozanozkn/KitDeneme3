@@ -119,7 +119,7 @@
 "Invalid Email" = "Geçersiz E-Posta";
 "Please enter a valid email" = "Lütfen geçerli bir e-posta girin";
 "Invalid Password" = "Geçersiz Şifre";
-"Please enter a valid password" = "Lütfen geçerli bir şifre girin";
+"Password must contain at least one special character, one uppercase letter and a number" = "Şifreniz en az bir özel karakter, bir büyük harf ve bir sayı içermeli";
 "Invalid Username" = "Geçersiz Kullanıcı Adı";
 "Please enter a valid username" = "Lütfen geçerli bir kullanıcı adı girin";
 "Unknown Registration Error" = "Bilinmeyen Kaydolma Hatası";

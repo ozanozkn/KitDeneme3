@@ -74,7 +74,7 @@
 "Yeni Şifre" = "New Password";
 "Yeni Şifre Tekrar" = "New Password Again";
 "Lütfen tüm alanları doldurun." = "Please fill in all fields.";
-"Lütfen geçerli bir şifre girin" = "Please enter a valid password";
+"Şifreniz en az bir özel karakter, bir büyük harf ve bir sayı içermeli" = "Password must contain at least one special character, one uppercase letter and a number";
 "Yeni şifre alanları eşleşmeli" = "New password fields must match.";
 "Kullancı yetkilendirilemedi." = "User not authenticated.";
 "Şifre değiştirilemedi, lütfen doldurduğunuz alanları kontrol edin" = "Error changing password, please fill the fields correctly";
